@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:transfercrypto/utils/http_override.dart';
 import 'package:flutter/material.dart';
 import 'package:transfercrypto/routes/routes.dart';
@@ -14,7 +15,12 @@ import 'constants/app_values.dart';
 import 'controllers/auth/auth_controller.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  FlutterNativeSplash.remove();
+
   await GetStorage.init();
   // HttpOverrides.global = new MyHttpOverrides();
 

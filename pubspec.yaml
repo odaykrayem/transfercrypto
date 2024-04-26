@@ -49,6 +49,8 @@ dependencies:
   dropdown_button2:
   image_picker:
   universal_html:
+  flutter_native_splash:
+
 
 dev_dependencies:
   flutter_test:

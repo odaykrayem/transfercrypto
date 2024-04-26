@@ -152,6 +152,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///Users/saad/.pub-cache/hosted/pub.dev/flutter_native_splash-2.2.19",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///Users/saad/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.16",
       "packageUri": "lib/",
@@ -656,7 +662,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-04-26T11:03:42.906239Z",
+  "generated": "2024-04-26T18:24:31.325697Z",
   "generator": "pub",
   "generatorVersion": "3.3.3"
 }
