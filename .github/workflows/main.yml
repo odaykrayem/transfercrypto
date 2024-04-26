@@ -53,4 +53,4 @@ jobs:
               server: ${{ secrets.SERVER_ID }}
               username: ${{ secrets.USERNAME }}
               password: ${{ secrets.PASSWORD }}
-              server-dir: /
+              server-dir: ../../public_html
