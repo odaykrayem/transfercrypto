@@ -1,0 +1,972 @@
+{
+	"info": {
+		"_postman_id": "0b3e2ae3-0ffe-416f-9752-da41f49590ec",
+		"name": "transfercrypto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "add_deposit_methods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "wallet_name",
+									"value": "new",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/deposit_methods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"deposit_methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_transfer_methods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "wallet_name",
+									"value": "perfect money",
+									"type": "text"
+								},
+								{
+									"key": "wallet_code",
+									"value": "nnnn",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/transfer_methods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transfer_methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_min_transfer_value",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "deposit_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "transfer_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/min_transfer_values",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"min_transfer_values"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_wallet_to_cash",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "f_name",
+									"value": "عمار",
+									"type": "text"
+								},
+								{
+									"key": "m_name",
+									"value": "احمد",
+									"type": "text"
+								},
+								{
+									"key": "l_name",
+									"value": "احمد",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "097654332",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "لاذقية",
+									"type": "text"
+								},
+								{
+									"key": "op_code",
+									"value": "jhhsgfsd",
+									"type": "text"
+								},
+								{
+									"key": "from_wallet",
+									"value": "payeer",
+									"type": "text"
+								},
+								{
+									"key": "admin_wallet",
+									"value": "payeer",
+									"type": "text"
+								},
+								{
+									"key": "admin_wallet_code",
+									"value": "nshdgyetsf",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "amount_after_fee",
+									"value": "90",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/add_wallet_to_cash",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"add_wallet_to_cash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_cash_to_wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "to_wallet",
+									"value": "payeer",
+									"type": "text"
+								},
+								{
+									"key": "to_wallet_code",
+									"value": "nshdgyetsf",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "amount_after_fee",
+									"value": "90",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/add_cash_to_wallet",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"add_cash_to_wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_wallet_to_wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "from_wallet",
+									"value": "pa",
+									"type": "text"
+								},
+								{
+									"key": "to_wallet",
+									"value": "payeer",
+									"type": "text"
+								},
+								{
+									"key": "to_wallet_code",
+									"value": "nshdgyetsf",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "amount_after_fee",
+									"value": "90",
+									"type": "text"
+								},
+								{
+									"key": "admin_wallet",
+									"value": "sdjshg",
+									"type": "text"
+								},
+								{
+									"key": "admin_wallet_code",
+									"value": "dsd",
+									"type": "text"
+								},
+								{
+									"key": "op_code",
+									"value": "dsdsd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/add_wallet_to_wallet",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"add_wallet_to_wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "from_wallet",
+									"value": "pa",
+									"type": "text"
+								},
+								{
+									"key": "to_wallet",
+									"value": "payeer",
+									"type": "text"
+								},
+								{
+									"key": "to_wallet_code",
+									"value": "nshdgyetsf",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "amount_after_fee",
+									"value": "90",
+									"type": "text"
+								},
+								{
+									"key": "admin_wallet",
+									"value": "sdjshg",
+									"type": "text"
+								},
+								{
+									"key": "admin_wallet_code",
+									"value": "dsd",
+									"type": "text"
+								},
+								{
+									"key": "op_code",
+									"value": "dsdsd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/add_transaction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"add_transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deposit_methods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/deposit_methods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"deposit_methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "methods_values",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/methods_values",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"methods_values"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer_methods_values",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/transfer_methods_values",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"transfer_methods_values"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cash_wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/cash_wallet",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cash_wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer_methods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/transfer_methods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"transfer_methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin_values",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/admin_values",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"admin_values"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user_info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/user_info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user_info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet_to_cash_list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/wallet_to_cash_list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallet_to_cash_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cash_to_wallet_list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/cash_to_wallet_list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cash_to_wallet_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet_to_wallet_list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/wallet_to_wallet_list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallet_to_wallet_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transactions_list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/transactions_list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transactions_list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "f_name",
+									"value": "mmm",
+									"type": "text"
+								},
+								{
+									"key": "l_name",
+									"value": "new",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "000000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "email@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "000000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "25",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send_otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "email@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/request_otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"request_otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify_otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "email@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "otp",
+									"value": "410896",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/verify_otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify_otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "oday.krayem.997@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "0000000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/update_pass",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"update_pass"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

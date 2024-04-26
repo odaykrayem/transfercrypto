@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="transfercrypto">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>transfercrypto</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+  <link rel="preload" href="http://localhost:52120/assets/assets/fonts/Outfit-Medium.ttf" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf" as="fetch"
+    crossorigin>
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/notosanssymbols/v41/rP2up3q65FkAtHfwd-eIS2brbDN6gxP34F9jRRCe4W3gfQ8gavVFRkzrbQ.ttf"
+    as="fetch" crossorigin>
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/notosansarabic/v18/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfyGyvu3CBFQLaig.ttf"
+    as="fetch" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf" as="fetch"
+    crossorigin>
+
+  <link rel="preconnect" href="https://cryptoadmin.transfercrypto.online/api/auth/admin_values">
+
+  <link rel="preload" href="http://localhost:52120/assets/FontManifest.json" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/canvaskit/chromium/canvaskit.wasm" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/fonts/MaterialIcons-Regular.otf" as="fetch" crossorigin>
+  <link rel="preload"
+    href="http://localhost:52120/assets/packages/syncfusion_flutter_datagrid/assets/font/UnsortIcon.ttf" as="fetch"
+    crossorigin>
+  <link rel="preload"
+    href="http://localhost:52120/assets/packages/syncfusion_flutter_datagrid/assets/font/FilterIcon.ttf" as="fetch"
+    crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/logo128.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/transfer_1.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/telegram.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/instagram.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/youtube.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/googleplay.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/whatsapp.png" as="fetch" crossorigin>
+  <link rel="preload" href="http://localhost:52120/assets/assets/images/facebook.png" as="fetch" crossorigin>
+</head>
+
+<body id="app-container">
+  <div class="progress">
+    <style>
+      body {
+        background: black;
+      }
+
+      .progress {
+        --progress: 0%;
+
+        width: 500px;
+        height: 50px;
+        margin: 9em auto;
+        border: 1px solid #fff;
+        padding: 12px 10px;
+        box-shadow: 0 0 10px #aaa;
+      }
+
+      .progress .bar {
+        width: var(--progress);
+        height: 100%;
+        background: linear-gradient(rgb(87, 14, 221), rgb(83, 0, 236), rgb(87, 14, 221));
+        background-repeat: repeat;
+        box-shadow: 0 0 10px 0px rgb(87, 14, 221);
+        animation:
+          shine 4s ease-in infinite,
+          end 1s ease-out 1 7s;
+        transition: width 3s ease 3s;
+      }
+
+      @property --progress {
+        syntax: "<length>";
+        /* initial-value: 0%; */
+        inherits: true;
+      }
+
+      @keyframes shine {
+        0% {
+          background-position: 0 0;
+        }
+
+        100% {
+          background-position: 0 50px;
+        }
+      }
+
+      @keyframes end {
+
+        0%,
+        100% {
+          box-shadow: 0 0 10px 0px rgb(87, 14, 221);
+        }
+
+        50% {
+          box-shadow: 0 0 15px 5px rgb(87, 14, 221);
+        }
+      }
+    </style>
+    <div class="bar"></div>
+
+  </div>
+  <script defer>
+    /* window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    }); */
+    const bar = document.querySelector(".bar");
+    bar.style.setProperty("--progress", "25%");
+
+    window.addEventListener('load', function (ev) {
+      /* var loading = document.querySelector('#loading'); */
+      /* loading.textContent = "Loading entrypoint..."; */
+      bar.style.setProperty("--progress", "50%");
+
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: async function (engineInitializer) {
+          /* loading.textContent = "Initializing engine..."; */
+          bar.style.setProperty("--progress", "75%");
+
+          let appRunner = await engineInitializer.initializeEngine();
+
+          /* loading.textContent = "Running app..."; */
+          bar.style.setProperty("--progress", "95%");
+
+          await appRunner.runApp();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
