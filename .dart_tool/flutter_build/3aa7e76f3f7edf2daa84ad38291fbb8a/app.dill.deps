@@ -56,6 +56,7 @@ file:///Users/saad/.pub-cache/hosted/pub.dev/dropdown_button2-2.1.4/lib/src/drop
 file:///Users/saad/.pub-cache/hosted/pub.dev/dropdown_button2-2.1.4/lib/src/dropdown_button2_data.dart
 file:///Users/saad/.pub-cache/hosted/pub.dev/dropdown_button2-2.1.4/lib/src/enums.dart
 file:///Users/saad/.pub-cache/hosted/pub.dev/dropdown_button2-2.1.4/lib/src/utils.dart
+file:///Users/saad/.pub-cache/hosted/pub.dev/flutter_native_splash-2.2.19/lib/flutter_native_splash.dart
 file:///Users/saad/.pub-cache/hosted/pub.dev/get-4.6.5/lib/get.dart
 file:///Users/saad/.pub-cache/hosted/pub.dev/get-4.6.5/lib/get_common/get_reset.dart
 file:///Users/saad/.pub-cache/hosted/pub.dev/get-4.6.5/lib/get_connect.dart
@@ -498,6 +499,7 @@ file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/data/repository/tran
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/data/repository/transfer_repo.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/data/repository/user_repo.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/data/status_values.dart
+file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/extensions/bool_parsing.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/extensions/hover_pointer_extinsion.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/extensions/int_extention.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/extensions/string_extension.dart
@@ -531,6 +533,7 @@ file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/utils/show_custom_sn
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/utils/transactions_data_source.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/utils/transactions_mobile_data_source.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/about_view.dart
+file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/auth_template.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/details_section.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/enterEmail.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/home_view.dart
@@ -549,6 +552,7 @@ file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/transfer_third
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/views/update_pass.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/widgets/custom_button.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/widgets/custom_button2.dart
+file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/widgets/custom_gesture.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/widgets/custom_loader.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/widgets/custom_nav_button.dart
 file:///Users/saad/AndroidStudioProjects/transfercrypto/lib/widgets/custom_text_filed.dart
