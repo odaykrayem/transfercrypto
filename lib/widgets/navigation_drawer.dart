@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../constants/app_colors.dart';
 import '../controllers/home/HomeController.dart';
 import '../data/nav_items_list.dart';
+import '../routes/routes.dart';
 import '../views/profile_view.dart';
 import '../views/login.dart';
 import '../views/register.dart';
@@ -112,8 +113,8 @@ class NavDrawer extends StatelessWidget {
                         backgroundColor: Colors.white,
                         child: IconButton(
                             onPressed: () {
-                              homeController.openDialog(ProfilePage());
-                              homeController.closeDrawer();
+                              debugPrint('ddd===========dd');
+                              Get.toNamed(Routes.getProfile());
                             },
                             color: Colors.white,
                             icon: Icon(

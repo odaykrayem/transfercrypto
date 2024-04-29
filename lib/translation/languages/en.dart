@@ -61,6 +61,8 @@ Map<String, String> english = {
   "pleaseTypeInTheCodeSentToYourEmail":
       "Please type in the code sent to your email , check the spam",
   "verify": "Verify",
+  "haventRecievedACode?": "haven't received a code ?",
+  "resend": "resend",
 
   //Update Password
   "passwordUpdatedSuccessfully": "Password updated Successfully",
@@ -71,6 +73,7 @@ Map<String, String> english = {
   "name": "Name",
   "logout": "Logout",
   "changeLangauge": "Langauge",
+  "profile": "My Profile",
 
   //Footer
   "downloadTheAppByClickingTheLinkBelow":
@@ -107,6 +110,8 @@ Map<String, String> english = {
   "pleaseEnterOnlyNumbers": "Please enter Only Numbers",
   "selectWallet": "Select Wallet",
   "cash": "Country currency or dollar",
+  "exchangeValue": "Exchange Value",
+  "syrianBound": "Syrian Bound",
   //Transfer second step
   "yourDetails": "Your Details",
   "yourEmail": "Your Email",

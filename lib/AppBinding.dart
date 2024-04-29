@@ -19,8 +19,9 @@ class AppBinding extends Bindings {
 
     Get.lazyPut<AuthRepo>(() => AuthRepo(apiClient: Get.find()));
     Get.lazyPut<AuthController>(() => AuthController(authRepo: Get.find()));
+    Get.put(HomeController, permanent: true);
     Get.lazyPut<HomeRepo>(() => HomeRepo(apiClient: Get.find()));
-    Get.lazyPut<HomeController>(() => HomeController(repo: Get.find()));
+    // Get.lazyPut<HomeController>(() => HomeController(repo: Get.find()));
     Get.lazyPut<UserRepo>(() => UserRepo(apiClient: Get.find()));
     Get.lazyPut<UserController>(() => UserController(repo: Get.find()));
 

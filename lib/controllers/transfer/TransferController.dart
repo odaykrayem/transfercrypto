@@ -70,9 +70,13 @@ class TransferController extends GetxController {
   double? _inputAmountAfterFee;
   double? get inputAmountAfterFee => _inputAmountAfterFee;
 
-  void setAmount(double amount, double amountAfterFee) {
+  double? _exchangeValue;
+  double? get exchangeValue => _exchangeValue;
+
+  void setAmount(double amount, double amountAfterFee, double exchangeValue) {
     _inputAmount = amount;
     _inputAmountAfterFee = amountAfterFee;
+    _exchangeValue = exchangeValue;
   }
 
   //Second Step
@@ -150,6 +154,7 @@ class TransferController extends GetxController {
     if (withAmount) {
       _inputAmount = null;
       _inputAmountAfterFee = null;
+      _exchangeValue = null;
     }
   }
 

@@ -1,10 +1,12 @@
-import 'package:transfercrypto/controllers/auth/auth_controller.dart';
-import 'package:transfercrypto/controllers/home/HomeController.dart';
+import 'package:transfercrypto/data/repository/user_repo.dart';
 import 'package:transfercrypto/extensions/int_extention.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transfercrypto/views/auth_template.dart';
 import '../constants/app_colors.dart';
+import '../controllers/home/HomeController.dart';
 import '../controllers/user/user_controller.dart';
+import '../data/repository/home_repo.dart';
 import '../widgets/custom_loader.dart';
 import '../widgets/custom_nav_button.dart';
 import '../widgets/hover_widget.dart';
@@ -12,23 +14,41 @@ import '../widgets/hover_widget.dart';
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
 
-  final UserController uc = Get.find<UserController>();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Column(
-        children: [
-          GetBuilder<UserController>(builder: (controller) {
-            return (controller.loaded
-                ? !controller.isErrorLoadingInfo
-                    ? Container(
-                        width: double.maxFinite,
-                        // height: double.maxFinite,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 40, horizontal: 20),
-                        child: Center(
+    Get.lazyPut<UserController>(() => UserController(repo: Get.find()));
+    Get.lazyPut<UserRepo>(() => UserRepo(apiClient: Get.find()));
+
+    Get.lazyPut<HomeController>(() => HomeController(repo: Get.find()));
+    Get.lazyPut<HomeRepo>(() => HomeRepo(apiClient: Get.find()));
+    return AuthTemplate(
+      isProfile: true,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: GetBuilder<UserController>(builder: (controller) {
+          return (Column(
+            children: [
+              SizedBox(
+                width: double.maxFinite,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'profile'.tr,
+                        maxLines: 1,
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.primaryColor),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ]),
+              ),
+              controller.loaded
+                  ? !controller.isErrorLoadingInfo
+                      ? Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -61,51 +81,50 @@ class ProfilePage extends StatelessWidget {
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                         color: isHoviring
-                                            ? AppColors.secondaryColor
-                                                .withOpacity(0.6)
-                                            : Colors.white,
+                                            ? Colors.white
+                                            : AppColors.secondaryColor
+                                                .withOpacity(0.6),
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                       child: Text(
                                         'changeLangauge'.tr,
                                         style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w800,
-                                          color: isHoviring
-                                              ? Colors.white
-                                              : AppColors.secondaryColor,
-                                        ),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w800,
+                                            color: isHoviring
+                                                ? AppColors.secondaryColor
+                                                : Colors.white),
                                       ),
                                     );
                                   }),
                                   onTap: () {
-                                    Get.find<AuthController>().setLanguage(
-                                        Get.locale == Locale('ar')
-                                            ? 'english'
-                                            : 'arabic');
+                                    controller.changeLanguage();
                                   }),
                               30.height,
                             ],
                           ),
-                        ),
-                      )
-                    : const Text('Connection Error')
-                : const CustomLoader());
-          }),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: CustomNavButton(
-                  onButtonPressed: () {
-                    Get.find<HomeController>().logout();
-                  },
-                  title: 'logout'.tr,
-                ),
+                        )
+                      : const Text('Connection Error')
+                  : const CustomLoader(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: CustomNavButton(
+                      firstColor: Colors.white,
+                      secondColor: AppColors.primaryColor,
+                      onButtonPressed: () {
+                        debugPrint("logouttt");
+                        controller.logout();
+                      },
+                      title: 'logout'.tr,
+                    ),
+                  )
+                ],
               )
             ],
-          )
-        ],
+          ));
+        }),
       ),
     );
   }

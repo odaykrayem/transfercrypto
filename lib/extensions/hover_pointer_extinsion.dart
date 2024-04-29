@@ -11,7 +11,7 @@ extension HoverExtension on Widget {
           ? MouseRegion(
               opaque: false,
               cursor: SystemMouseCursors.click,
-              onHover: (event) => appContainer!.style.cursor = 'pointer',
+              onHover: (event) => appContainer?.style.cursor = 'pointer',
               onExit: (event) => appContainer!.style.cursor = 'default',
               child: this,
             )

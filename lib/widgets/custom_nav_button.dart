@@ -6,16 +6,22 @@ import 'hover_widget.dart';
 class CustomNavButton extends StatelessWidget {
   final String title;
   final VoidCallback onButtonPressed;
+  final Color firstColor;
+  final Color secondColor;
   CustomNavButton(
-      {super.key, required this.onButtonPressed, required this.title});
+      {super.key,
+      required this.onButtonPressed,
+      required this.title,
+      this.firstColor = AppColors.secondaryColor,
+      this.secondColor = Colors.white});
 
   final BorderRadius btnBorderRadius = BorderRadius.circular(15);
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      hoverColor: Colors.transparent,
-      focusColor: Colors.transparent,
-      splashColor: Colors.transparent,
+    return GestureDetector(
+      // hoverColor: Colors.transparent,
+      // focusColor: Colors.transparent,
+      // splashColor: Colors.transparent,
       // onHover: (value) => ,
       child: ScreenTypeLayout.builder(
         mobile: (_) => customNavButtonMobile(title),
@@ -71,7 +77,7 @@ class CustomNavButton extends StatelessWidget {
           height: 60,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: isHoviring ? AppColors.secondaryColor : Colors.white,
+            color: isHoviring ? firstColor : secondColor,
             // gradient: ColorGradient.backgroundBtn,
             borderRadius: btnBorderRadius,
           ),
@@ -81,7 +87,7 @@ class CustomNavButton extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w800,
-              color: isHoviring ? Colors.white : AppColors.primaryColor,
+              color: isHoviring ? secondColor : firstColor,
             ),
           ),
         );

@@ -1,9 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:transfercrypto/controllers/home/HomeController.dart';
 import 'package:get/get.dart';
+import '../../data/repository/home_repo.dart';
 import '../../data/repository/user_repo.dart';
 import '../../models/response_model.dart';
 import '../../models/user_model.dart';
 import '../../services/networking/print_response_info.dart';
+import '../auth/auth_controller.dart';
 
 class UserController extends GetxController {
   final UserRepo repo;
@@ -18,11 +21,15 @@ class UserController extends GetxController {
   UserModel? _userModel;
 
   UserModel? get userModel => _userModel;
+
   HomeController homeController = Get.find<HomeController>();
+  AuthController authController = Get.find<AuthController>();
 
   @override
   void onInit() {
     getUserInfo();
+    // Get.lazyPut<HomeController>(() => HomeController(repo: Get.find()));
+    // Get.lazyPut<HomeRepo>(() => HomeRepo(apiClient: Get.find()));
     super.onInit();
   }
 
@@ -65,5 +72,14 @@ class UserController extends GetxController {
       update();
     }
     return responseModel;
+  }
+
+  void logout() {
+    homeController.logout();
+  }
+
+  void changeLanguage() {
+    authController
+        .setLanguage(Get.locale == Locale('ar') ? 'english' : 'arabic');
   }
 }

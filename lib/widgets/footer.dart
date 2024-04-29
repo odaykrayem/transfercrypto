@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:transfercrypto/widgets/social_widget.dart';
 import '../constants/app_colors.dart';
-import 'package:transfercrypto/extensions/hover_pointer_extinsion.dart';
 import '../constants/app_values.dart';
 import '../controllers/home/HomeController.dart';
 import '../data/nav_items_list.dart';
@@ -189,7 +188,7 @@ class Footer extends StatelessWidget {
           ),
         ],
       ),
-    ).showCursorOnHover;
+    );
   }
 
   Widget footerMobile() {
@@ -233,7 +232,7 @@ class Footer extends StatelessWidget {
                       image: 'assets/images/facebook.png',
                       url: AppValues.facebookURL,
                     ),
-                  // 20.width,
+                    // 20.width,
                     SocialWidget(
                       image: 'assets/images/whatsapp.png',
                       url: AppValues.whatsappURL,

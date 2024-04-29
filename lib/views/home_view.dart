@@ -3,6 +3,7 @@ import 'package:transfercrypto/extensions/int_extention.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:transfercrypto/routes/routes.dart';
 import '../constants/app_values.dart';
 import '../widgets/custom_button.dart';
 import 'details_section.dart';
@@ -53,7 +54,8 @@ class HomeView extends StatelessWidget {
             onTap: () {
               _homeController.isLoggedIn()
                   ? _homeController.changePage(3)
-                  : _homeController.openDialog(const LoginPage());
+                  : Get.to(Routes.login);
+              // : _homeController.openDialog(const LoginPage());
             },
           ),
           50.height

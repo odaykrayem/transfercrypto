@@ -31,8 +31,9 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     isLoggedIn();
-    // buildCitiesList();
-    // getAdminInfo();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getAdminInfo();
+    });
     super.onInit();
   }
 
@@ -161,7 +162,7 @@ class HomeController extends GetxController {
 
   void logout() {
     authController.clearSavedData();
-    if (Get.isDialogOpen == true) Get.back();
+    Get.back();
     changePage(0);
   }
 

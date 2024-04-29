@@ -61,6 +61,8 @@ Map<String, String> arabic = {
   "pleaseTypeInTheCodeSentToYourEmail":
       " من فضلك أدخل الرمز الذي تم إرساله إلى بريدك الاكتروني يمكن التحقق من قسم الرسائل غير المرغوب بها",
   "verify": "تحقق",
+  "haventRecievedACode?": "لم تتلق رمز التأكيد",
+  "resend": "إعادة الإرسال",
 
   //Update Password
   "passwordUpdatedSuccessfully": "تم تحديث كلمة المرور بنجاح",
@@ -71,6 +73,7 @@ Map<String, String> arabic = {
   "name": "اسم الستخدم",
   "logout": "تسجيل الخروج",
   "changeLangauge": "تغيير اللغة",
+  "profile": "الملف الشخصي",
 
   //Footer
   "downloadTheAppByClickingTheLinkBelow":
@@ -105,6 +108,8 @@ Map<String, String> arabic = {
   "pleaseEnterOnlyNumbers": "من فضلك أدخل أرقام صحيحة فقط",
   "selectWallet": "اختر محفظة",
   "cash": "عملة البلد أو الدولار",
+  "exchangeValue": "القيمة حسب سعر الصرف",
+  "syrianBound": "ليرة سورية",
   //Transfer second step
   "yourDetails": "تفاصيلك",
   "yourEmail": "بريدك الالكتروني",

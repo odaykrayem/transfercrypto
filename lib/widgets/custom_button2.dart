@@ -1,5 +1,5 @@
-import 'package:transfercrypto/extensions/hover_pointer_extinsion.dart';
 import 'package:flutter/material.dart';
+import 'package:transfercrypto/widgets/custom_gesture.dart';
 
 import '../constants/app_colors.dart';
 
@@ -23,7 +23,7 @@ class CustomButton2 extends StatelessWidget {
   final bool iconBeforeText;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return CustomGesture(
       onTap: onTap,
       child: Container(
         // width: 150,
@@ -64,6 +64,6 @@ class CustomButton2 extends StatelessWidget {
           ),
         ),
       ),
-    ).showCursorOnHover;
+    );
   }
 }

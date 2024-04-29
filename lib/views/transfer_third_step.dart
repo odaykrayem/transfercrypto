@@ -149,9 +149,9 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                                               : SizedBox.shrink()
                                         ]),
                                   ),
-                                  controller.selectedTransferMethod!
-                                              .wallet_name !=
-                                          'cash'
+                                  !controller
+                                          .selectedTransferMethod!.wallet_name
+                                          .contains('cash')
                                       ? wtwAndwtc(controller, sizingInformation)
                                       : ctw(controller, sizingInformation),
                                   50.height,
@@ -192,9 +192,9 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                                               userReceiptImage: pickedFile,
                                             );
                                             if (controller
-                                                    .selectedTransferMethod!
-                                                    .wallet_name ==
-                                                'cash') {
+                                                .selectedTransferMethod!
+                                                .wallet_name
+                                                .contains('cash')) {
                                               if (pickedFile == null) {
                                                 showCustomSnackBar(
                                                     'pleaseChooseReceiptImage'

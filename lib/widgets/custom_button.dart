@@ -1,4 +1,3 @@
-import 'package:transfercrypto/extensions/hover_pointer_extinsion.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../constants/app_colors.dart';
@@ -17,7 +16,7 @@ class CustomButton extends StatelessWidget {
         mobile: (_) => customButtonMobile(title),
         tablet: (_) => customButtonTabletDesktop(title),
       ),
-    ).showCursorOnHover;
+    );
   }
 
   Widget customButtonMobile(String title) {

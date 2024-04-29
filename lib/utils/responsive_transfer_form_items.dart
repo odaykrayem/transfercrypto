@@ -6,9 +6,11 @@ import 'package:responsive_builder/responsive_builder.dart';
 import '../data/enums.dart';
 import '../widgets/custom_text_filed.dart';
 
+//child2 must have the value of a widget
+//specially if there non to display
 Widget formItem({
   required String fieldTitle,
-  required String field2Title,
+  String? field2Title,
   TextEditingController? fieldController,
   TextEditingController? field2Controller,
   TextFieldType? textFieldType,
@@ -21,6 +23,7 @@ Widget formItem({
   Widget? child2,
   TextInputType? fieldKeyboardType,
   TextInputType? field2KeyboardType,
+  bool? disablePrimaryTextField,
   bool? disableConfirmTextField,
   Function(String)? onChangedfield,
   Function(String)? onChangedfield2,
@@ -67,6 +70,7 @@ Widget formItem({
                   onFieldSubmitted: onSubmitfield,
                   validator: validatorfield,
                   autovalidateMode: autoValidateField,
+                  readOnly: disablePrimaryTextField,
                 ),
             addText
                 ? Column(
@@ -114,44 +118,43 @@ Widget formItem({
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              field2Title,
+              field2Title ?? '',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.grey[500],
               ),
             ),
             25.height,
-            child2 != null?child2:
-            isAmount?
-                Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: CustomTextField(
-                    textFieldType: text2FieldType!,
-                    prefixIcon: field2Icon ?? fieldIcon,
-                    controller: field2Controller,
-                    readOnly: disableConfirmTextField,
-                    onChanged: onChangedfield2,
-                    keyboardType: field2KeyboardType,
-                    onFieldSubmitted: onSubmitfield2,
-                    autovalidateMode: autoValidateField2,
-                    validator: validatorfield2,
-                    // textStyle: TextStyle(locale:isAmount ?  Locale('en'): null) ,
-                  
-                  ),
-                ):
-                CustomTextField(
-                  textFieldType: text2FieldType!,
-                  prefixIcon: field2Icon ?? fieldIcon,
-                  controller: field2Controller,
-                  readOnly: disableConfirmTextField,
-                  onChanged: onChangedfield2,
-                  keyboardType: field2KeyboardType,
-                  onFieldSubmitted: onSubmitfield2,
-                  autovalidateMode: autoValidateField2,
-                  validator: validatorfield2,
-                  // textStyle: TextStyle(locale:isAmount ?  Locale('en'): null) ,
-                
-                ),
+            child2 != null
+                ? child2
+                : isAmount
+                    ? Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: CustomTextField(
+                          textFieldType: text2FieldType!,
+                          prefixIcon: field2Icon ?? fieldIcon,
+                          controller: field2Controller,
+                          readOnly: disableConfirmTextField,
+                          onChanged: onChangedfield2,
+                          keyboardType: field2KeyboardType,
+                          onFieldSubmitted: onSubmitfield2,
+                          autovalidateMode: autoValidateField2,
+                          validator: validatorfield2,
+                          // textStyle: TextStyle(locale:isAmount ?  Locale('en'): null) ,
+                        ),
+                      )
+                    : CustomTextField(
+                        textFieldType: text2FieldType!,
+                        prefixIcon: field2Icon ?? fieldIcon,
+                        controller: field2Controller,
+                        readOnly: disableConfirmTextField,
+                        onChanged: onChangedfield2,
+                        keyboardType: field2KeyboardType,
+                        onFieldSubmitted: onSubmitfield2,
+                        autovalidateMode: autoValidateField2,
+                        validator: validatorfield2,
+                        // textStyle: TextStyle(locale:isAmount ?  Locale('en'): null) ,
+                      ),
             addText2
                 ? Column(
                     children: [

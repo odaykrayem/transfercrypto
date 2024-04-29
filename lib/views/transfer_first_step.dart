@@ -1,3 +1,4 @@
+import 'package:transfercrypto/controllers/home/HomeController.dart';
 import 'package:transfercrypto/controllers/transfer/TransferController.dart';
 import 'package:transfercrypto/extensions/int_extention.dart';
 import 'package:transfercrypto/extensions/string_extension.dart';
@@ -25,23 +26,31 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
     super.initState();
   }
 
+  HomeController homeController = Get.find<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     var amountController = TextEditingController();
     var amountAfterFeeController = TextEditingController();
+    var exchangeValueContoller = TextEditingController();
 
     double? amount;
     double? amountAfterFee;
+    double? exchangeValue;
+
     if (Get.find<TransferController>().inputAmount != null) {
       debugPrint('inputAmount ${Get.find<TransferController>().inputAmount}');
       amount = Get.find<TransferController>().inputAmount;
       amountAfterFee = Get.find<TransferController>().inputAmountAfterFee;
+      exchangeValue = Get.find<TransferController>().exchangeValue;
       amountController.text = '${amount}';
       amountAfterFeeController.text = '${amountAfterFee}';
+      exchangeValueContoller.text = '${exchangeValue}';
     } else {
       debugPrint('inputAmount ${Get.find<TransferController>().inputAmount}');
       amountController.text = '';
       amountAfterFeeController.text = '';
+      exchangeValueContoller.text = '';
     }
 
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -87,8 +96,8 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                       margin:
                                           EdgeInsets.symmetric(horizontal: 30),
                                       child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                          // mainAxisAlignment:
+                                          //     MainAxisAlignment.spaceBetween,
                                           children: [
                                             sizingInformation
                                                         .deviceScreenType !=
@@ -101,29 +110,31 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                   )
                                                 : SizedBox.shrink(),
                                             Expanded(
-                                              child: Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: sizingInformation
-                                                                .deviceScreenType ==
-                                                            DeviceScreenType
-                                                                .mobile
-                                                        ? 0
-                                                        : 10),
-                                                child: Text(
-                                                  'chooseAmountAndWallet'.tr,
-                                                  maxLines: 1,
-                                                  softWrap: true,
-                                                  style: TextStyle(
-                                                      fontSize: sizingInformation
+                                              child: Center(
+                                                child: Container(
+                                                  margin: EdgeInsets.symmetric(
+                                                      horizontal: sizingInformation
                                                                   .deviceScreenType ==
                                                               DeviceScreenType
                                                                   .mobile
-                                                          ? 18
-                                                          : 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: AppColors
-                                                          .primaryColor),
+                                                          ? 0
+                                                          : 30),
+                                                  child: Text(
+                                                    'chooseAmountAndWallet'.tr,
+                                                    maxLines: 1,
+                                                    softWrap: true,
+                                                    style: TextStyle(
+                                                        fontSize: sizingInformation
+                                                                    .deviceScreenType ==
+                                                                DeviceScreenType
+                                                                    .mobile
+                                                            ? 18
+                                                            : 20,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: AppColors
+                                                            .primaryColor),
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -186,6 +197,18 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                   amountAfterFeeController
                                                           .text =
                                                       '${amountAfterFee}';
+                                                  exchangeValue = int.parse(
+                                                          homeController
+                                                              .adminValuesList
+                                                              .firstWhere(
+                                                                  (element) =>
+                                                                      element
+                                                                          .key ==
+                                                                      'selling_price')
+                                                              .value) *
+                                                      amountAfterFee!;
+                                                  exchangeValueContoller.text =
+                                                      '${exchangeValue}';
                                                 }
                                               },
                                             ),
@@ -214,7 +237,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                     .setSelectedReceiveMethod(
                                                         value!);
                                                 controller.updateValues();
-
+                                                int exchangePrice = 0;
                                                 if (amount != null) {
                                                   if (amount! >=
                                                           controller
@@ -233,10 +256,47 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                     amountAfterFeeController
                                                             .text =
                                                         '${amountAfterFee}';
+                                                    if (controller
+                                                        .selectedTransferMethod!
+                                                        .wallet_name
+                                                        .contains('cash')) {
+                                                      exchangePrice = int.parse(
+                                                          homeController
+                                                              .adminValuesList
+                                                              .firstWhere(
+                                                                  (element) =>
+                                                                      element
+                                                                          .key ==
+                                                                      'transfer_price')
+                                                              .value);
+                                                    } else if (controller
+                                                        .selectedReceiveMethod!
+                                                        .wallet_name
+                                                        .contains('cash')) {
+                                                      exchangePrice = int.parse(
+                                                          homeController
+                                                              .adminValuesList
+                                                              .firstWhere(
+                                                                  (element) =>
+                                                                      element
+                                                                          .key ==
+                                                                      'receive_price')
+                                                              .value);
+                                                    }
+                                                    exchangeValue =
+                                                        exchangePrice *
+                                                            amountAfterFee!;
+                                                    debugPrint(
+                                                        'exxxx :: ${exchangeValue}');
+                                                    exchangeValueContoller
+                                                            .text =
+                                                        '${exchangeValue}';
                                                   } else {
                                                     amountAfterFeeController
                                                         .text = '';
                                                     amountController.text = '';
+                                                    exchangeValueContoller
+                                                        .text = '';
                                                   }
                                                 }
                                               },
@@ -284,6 +344,37 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                             amountAfterFee = valAfterFee;
                                             amountAfterFeeController.text =
                                                 '${valAfterFee}';
+                                            int exchangePrice = 0;
+                                            if (controller
+                                                .selectedTransferMethod!
+                                                .wallet_name
+                                                .contains('cash')) {
+                                              exchangePrice = int.parse(
+                                                  homeController.adminValuesList
+                                                      .firstWhere((element) =>
+                                                          element.key ==
+                                                          'transfer_price')
+                                                      .value);
+                                            } else if (controller
+                                                .selectedReceiveMethod!
+                                                .wallet_name
+                                                .contains('cash')) {
+                                              exchangePrice = int.parse(
+                                                  homeController.adminValuesList
+                                                      .firstWhere((element) =>
+                                                          element.key ==
+                                                          'receive_price')
+                                                      .value);
+                                            }
+
+                                            exchangeValue =
+                                                exchangePrice * amountAfterFee!;
+
+                                            debugPrint(
+                                                'exchange value :${exchangeValue}');
+
+                                            exchangeValueContoller.text =
+                                                '${exchangeValue}';
                                           }
                                         }
                                       },
@@ -329,6 +420,41 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                           '${controller.selectedMethod!.max_value}',
                                       endAddText2: '',
                                     ),
+                                    25.height,
+                                    (controller.selectedReceiveMethod!
+                                                .wallet_name
+                                                .contains('cash') ||
+                                            controller.selectedTransferMethod!
+                                                .wallet_name
+                                                .contains('cash'))
+                                        ? formItem(
+                                            child2: SizedBox.shrink(),
+                                            fieldTitle: 'exchangeValue'.tr,
+                                            fieldController:
+                                                exchangeValueContoller,
+                                            disablePrimaryTextField: true,
+                                            sizingInformation:
+                                                sizingInformation,
+                                            textFieldType: TextFieldType.PHONE,
+                                            autoFocusField: false,
+                                            fieldIcon: Icons.money_outlined,
+                                            fieldKeyboardType:
+                                                TextInputType.number,
+                                            autoValidateField: AutovalidateMode
+                                                .onUserInteraction,
+                                            isAmount: false,
+                                            onChangedfield: (value) {},
+                                            addText: true,
+                                            startAddText: '',
+                                            middleAddText:
+                                                '${'syrianBound'.tr}',
+                                            endAddText: '',
+                                            addText2: false,
+                                            startAddText2: '',
+                                            middleAddText2: '',
+                                            endAddText2: '',
+                                          )
+                                        : SizedBox.shrink(),
                                     50.height,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
@@ -339,7 +465,9 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                             if (formKey.currentState!
                                                 .validate()) {
                                               controller.setAmount(
-                                                  amount!, amountAfterFee!);
+                                                  amount!,
+                                                  amountAfterFee!,
+                                                  exchangeValue!);
                                               controller.nextPage();
                                             } else {
                                               showCustomSnackBar(

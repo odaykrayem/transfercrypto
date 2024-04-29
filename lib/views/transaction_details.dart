@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:transfercrypto/widgets/custom_gesture.dart';
 
 import '../constants/api_constants.dart';
 import '../constants/app_colors.dart';
@@ -238,7 +239,42 @@ class TransactionDetails extends StatelessWidget {
                         ? rowWidget(
                             title: 'transferOPerationToYourAccountImage'.tr,
                             content: '',
-                            child2: Container(
+                            child2: CustomGesture(
+                              onTap: () {
+                                if (kIsWeb) {
+                                  html.window.open(
+                                      (ApiConstants.imageUrl +
+                                              model.admin_image!)
+                                          .replaceAll('\\', '/'),
+                                      'img');
+                                }
+                                openDialogUtil(
+                                  child: ImageNetwork(
+                                    height:
+                                        sizingInformation.deviceScreenType ==
+                                                DeviceScreenType.mobile
+                                            ? 400
+                                            : 500,
+                                    width: sizingInformation.deviceScreenType ==
+                                            DeviceScreenType.mobile
+                                        ? 400
+                                        : 600,
+                                    fitAndroidIos: BoxFit.contain,
+                                    fitWeb: BoxFitWeb.contain,
+                                    image: (ApiConstants.imageUrl +
+                                            model.admin_image!)
+                                        .replaceAll('\\', '/'),
+                                  ),
+                                  height: sizingInformation.deviceScreenType ==
+                                          DeviceScreenType.mobile
+                                      ? 400
+                                      : 500,
+                                  width: sizingInformation.deviceScreenType ==
+                                          DeviceScreenType.mobile
+                                      ? Get.size.width
+                                      : 600,
+                                );
+                              },
                               child: ImageNetwork(
                                 height: sizingInformation.deviceScreenType ==
                                         DeviceScreenType.mobile
@@ -253,45 +289,8 @@ class TransactionDetails extends StatelessWidget {
                                 image:
                                     (ApiConstants.imageUrl + model.admin_image!)
                                         .replaceAll('\\', '/'),
-                                onTap: () {
-                                  if (kIsWeb) {
-                                    html.window.open(
-                                        (ApiConstants.imageUrl +
-                                                model.admin_image!)
-                                            .replaceAll('\\', '/'),
-                                        'img');
-                                  }
-                                  openDialogUtil(
-                                    child: ImageNetwork(
-                                      height:
-                                          sizingInformation.deviceScreenType ==
-                                                  DeviceScreenType.mobile
-                                              ? 400
-                                              : 500,
-                                      width:
-                                          sizingInformation.deviceScreenType ==
-                                                  DeviceScreenType.mobile
-                                              ? 400
-                                              : 600,
-                                      fitAndroidIos: BoxFit.contain,
-                                      fitWeb: BoxFitWeb.contain,
-                                      image: (ApiConstants.imageUrl +
-                                              model.admin_image!)
-                                          .replaceAll('\\', '/'),
-                                    ),
-                                    height:
-                                        sizingInformation.deviceScreenType ==
-                                                DeviceScreenType.mobile
-                                            ? 400
-                                            : 500,
-                                    width: sizingInformation.deviceScreenType ==
-                                            DeviceScreenType.mobile
-                                        ? Get.size.width
-                                        : 600,
-                                  );
-                                },
                               ),
-                            ).showCursorOnHover)
+                            ))
                         : SizedBox.shrink(),
                   ],
                 ),
