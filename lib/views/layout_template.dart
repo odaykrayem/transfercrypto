@@ -58,53 +58,67 @@ class LayoutTemplate extends GetView<HomeController> {
                   NavBar(
                     navBarHeight: navBarHeight,
                   ),
-                  kIsWeb
-                      ? SizedBox(
-                          height: sizingInformation.deviceScreenType ==
-                                  DeviceScreenType.desktop
-                              ? Get.size.height - navBarHeight
-                              : (controller.currentIndex.value == 0 ||
-                                      controller.currentIndex.value == 2)
-                                  ? Get.size.height
-                                  : Get.size.height + 400,
-                          child: Container(
-                            color: AppColors.lightPurple,
-                            alignment: Alignment.topCenter,
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(
-                                maxWidth: 1200,
-                              ),
-                              child: Navigator(
-                                key: Get.nestedKey(1),
-                                // initialRoute: '/no-connection',
-                                onGenerateRoute: controller.onGenerateRoute,
-                              ),
-                            ),
-                          ),
-                        )
-                      : Obx(() => SizedBox(
-                            height: sizingInformation.deviceScreenType ==
-                                    DeviceScreenType.desktop
-                                ? Get.size.height - navBarHeight
-                                : (controller.currentIndex.value == 0 ||
-                                        controller.currentIndex.value == 2)
-                                    ? Get.size.height
-                                    : Get.size.height + 400,
-                            child: Container(
-                              color: AppColors.lightPurple,
-                              alignment: Alignment.topCenter,
-                              child: ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  maxWidth: 1200,
-                                ),
-                                child: Navigator(
-                                  key: Get.nestedKey(1),
-                                  // initialRoute: '/no-connection',
-                                  onGenerateRoute: controller.onGenerateRoute,
-                                ),
-                              ),
-                            ),
-                          )),
+                  // kIsWeb
+                  //     ? SizedBox(
+                  //         height: sizingInformation.deviceScreenType ==
+                  //                 DeviceScreenType.desktop
+                  //             ? Get.size.height - navBarHeight
+                  //             : (controller.currentIndex.value == 0 ||
+                  //                     controller.currentIndex.value == 2)
+                  //                 ? Get.size.height
+                  //                 : Get.size.height + 1100,
+                  //         child: Container(
+                  //           color: AppColors.lightPurple,
+                  //           alignment: Alignment.topCenter,
+                  //           child: ConstrainedBox(
+                  //             constraints: const BoxConstraints(
+                  //               maxWidth: 1200,
+                  //             ),
+                  //             child: Navigator(
+                  //               key: Get.nestedKey(1),
+                  //               // initialRoute: '/no-connection',
+                  //               onGenerateRoute: controller.onGenerateRoute,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     :
+                  SizedBox(
+                    height: sizingInformation.deviceScreenType ==
+                            DeviceScreenType.desktop
+                        ? Get.size.height - navBarHeight + 100
+                        : (controller.currentIndex.value == 0 ||
+                                controller.currentIndex.value == 2)
+                            ? Get.size.height
+                            : sizingInformation.deviceScreenType ==
+                                    DeviceScreenType.tablet
+                                ? Get.size.height + 100
+                                : Get.size.height + 500,
+                    child: Container(
+                      // color: sizingInformation.deviceScreenType ==
+                      //         DeviceScreenType.desktop
+                      //     ? Colors.red
+                      //     : (controller.currentIndex.value == 0 ||
+                      //             controller.currentIndex.value == 2)
+                      //         ? Colors.amber
+                      //         : sizingInformation.deviceScreenType ==
+                      //                 DeviceScreenType.tablet
+                      //             ? Colors.purple
+                      //             : Colors.blue,
+                      color: AppColors.lightPurple,
+                      alignment: Alignment.topCenter,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 1200,
+                        ),
+                        child: Navigator(
+                          key: Get.nestedKey(1),
+                          // initialRoute: '/no-connection',
+                          onGenerateRoute: controller.onGenerateRoute,
+                        ),
+                      ),
+                    ),
+                  ),
                   Footer()
                 ],
               ),

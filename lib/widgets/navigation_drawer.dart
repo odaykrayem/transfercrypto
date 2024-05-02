@@ -5,9 +5,6 @@ import '../constants/app_colors.dart';
 import '../controllers/home/HomeController.dart';
 import '../data/nav_items_list.dart';
 import '../routes/routes.dart';
-import '../views/profile_view.dart';
-import '../views/login.dart';
-import '../views/register.dart';
 import 'custom_nav_button.dart';
 import 'navbar_item.dart';
 
@@ -53,8 +50,8 @@ class NavDrawer extends StatelessWidget {
                     title: 'login'.tr,
                     onButtonPressed: () {
                       homeController.closeDrawer();
-
-                      homeController.openDialog(LoginPage());
+                      Get.toNamed(Routes.login);
+                      // homeController.openDialog(LoginPage());
                     },
                   ),
                   const SizedBox(
@@ -64,7 +61,8 @@ class NavDrawer extends StatelessWidget {
                     title: 'register'.tr,
                     onButtonPressed: () {
                       homeController.closeDrawer();
-                      homeController.openDialog(RegisterPage());
+                      Get.toNamed(Routes.signup);
+                      // homeController.openDialog(RegisterPage());
                     },
                   ),
                 ]),

@@ -54,7 +54,7 @@ class HomeView extends StatelessWidget {
             onTap: () {
               _homeController.isLoggedIn()
                   ? _homeController.changePage(3)
-                  : Get.to(Routes.login);
+                  : Get.toNamed(Routes.login);
               // : _homeController.openDialog(const LoginPage());
             },
           ),

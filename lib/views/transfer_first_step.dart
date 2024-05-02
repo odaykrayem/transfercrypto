@@ -79,424 +79,380 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                         bottom: 0,
                         right: 0,
                         left: 0,
-                        child: ListView(
-                          // primary: false,
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 25, left: 25, top: 15, bottom: 5),
-                              child: Form(
-                                key: formKey,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: double.maxFinite,
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: 30),
-                                      child: Row(
-                                          // mainAxisAlignment:
-                                          //     MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            sizingInformation
-                                                        .deviceScreenType !=
-                                                    DeviceScreenType.mobile
-                                                ? Expanded(
-                                                    child: Divider(
-                                                      color: AppColors
-                                                          .secondaryColor,
-                                                    ),
-                                                  )
-                                                : SizedBox.shrink(),
-                                            Expanded(
-                                              child: Center(
-                                                child: Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: sizingInformation
-                                                                  .deviceScreenType ==
-                                                              DeviceScreenType
-                                                                  .mobile
-                                                          ? 0
-                                                          : 30),
-                                                  child: Text(
-                                                    'chooseAmountAndWallet'.tr,
-                                                    maxLines: 1,
-                                                    softWrap: true,
-                                                    style: TextStyle(
-                                                        fontSize: sizingInformation
-                                                                    .deviceScreenType ==
-                                                                DeviceScreenType
-                                                                    .mobile
-                                                            ? 18
-                                                            : 20,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: AppColors
-                                                            .primaryColor),
-                                                  ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              right: 25, left: 25, top: 15, bottom: 5),
+                          child: Form(
+                            key: formKey,
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: double.maxFinite,
+                                  margin: EdgeInsets.symmetric(horizontal: 30),
+                                  child: Row(
+                                      // mainAxisAlignment:
+                                      //     MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        sizingInformation.deviceScreenType !=
+                                                DeviceScreenType.mobile
+                                            ? Expanded(
+                                                child: Divider(
+                                                  color:
+                                                      AppColors.secondaryColor,
                                                 ),
+                                              )
+                                            : SizedBox.shrink(),
+                                        Expanded(
+                                          child: Center(
+                                            child: Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: sizingInformation
+                                                              .deviceScreenType ==
+                                                          DeviceScreenType
+                                                              .mobile
+                                                      ? 0
+                                                      : 30),
+                                              child: Text(
+                                                'chooseAmountAndWallet'.tr,
+                                                maxLines: 1,
+                                                softWrap: true,
+                                                style: TextStyle(
+                                                    fontSize: sizingInformation
+                                                                .deviceScreenType ==
+                                                            DeviceScreenType
+                                                                .mobile
+                                                        ? 18
+                                                        : 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:
+                                                        AppColors.primaryColor),
                                               ),
                                             ),
-                                            sizingInformation
-                                                        .deviceScreenType !=
-                                                    DeviceScreenType.mobile
-                                                ? Expanded(
-                                                    child: Divider(
-                                                      color: AppColors
-                                                          .secondaryColor,
-                                                    ),
-                                                  )
-                                                : SizedBox.shrink()
-                                          ]),
-                                    ),
-                                    50.height,
-                                    formItem(
-                                        fieldTitle:
-                                            'chooseWalletWhichYouWillTransferFrom'
-                                                .tr,
-                                        field2Title:
-                                            'chooseWalletWhichYouWillTransferTo'
-                                                .tr,
-                                        sizingInformation: sizingInformation,
-                                        autoFocusField: false,
-                                        child1: Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              border: Border.all(
-                                                  color: AppColors
-                                                      .secondaryColor)),
-                                          child: Theme(
-                                            data: Theme.of(context).copyWith(
-                                                focusColor: Colors.transparent),
-                                            child: CustomDropDownButtonList(
-                                              value: controller
-                                                  .selectedTransferMethod,
-                                              isReceive: false,
-                                              list: controller
-                                                  .transferMethodsList,
-                                              onChanged: (value) {
-                                                controller
-                                                    .resetAllDetails(false);
-
-                                                controller
-                                                    .setSelectedTransferMethod(
-                                                        value!);
-                                                controller.updateReceiveList();
-
-                                                controller.updateValues();
-
-                                                if (amount != null) {
-                                                  amountAfterFee = amount! -
-                                                      amount! *
-                                                          controller
-                                                              .selectedMethod!
-                                                              .commission /
-                                                          100;
-                                                  amountAfterFeeController
-                                                          .text =
-                                                      '${amountAfterFee}';
-                                                  exchangeValue = int.parse(
-                                                          homeController
-                                                              .adminValuesList
-                                                              .firstWhere(
-                                                                  (element) =>
-                                                                      element
-                                                                          .key ==
-                                                                      'selling_price')
-                                                              .value) *
-                                                      amountAfterFee!;
-                                                  exchangeValueContoller.text =
-                                                      '${exchangeValue}';
-                                                }
-                                              },
-                                            ),
                                           ),
                                         ),
-                                        child2: Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              border: Border.all(
-                                                  color: AppColors
-                                                      .secondaryColor)),
-                                          child: Theme(
-                                            data: Theme.of(context).copyWith(
-                                                focusColor: Colors.transparent),
-                                            child: CustomDropDownButtonList(
-                                              value: controller
-                                                  .selectedReceiveMethod,
-                                              isReceive: true,
-                                              list:
-                                                  controller.receiveMethodsList,
-                                              onChanged: (value) {
-                                                controller
-                                                    .resetAllDetails(false);
-                                                controller
-                                                    .setSelectedReceiveMethod(
-                                                        value!);
-                                                controller.updateValues();
-                                                int exchangePrice = 0;
-                                                if (amount != null) {
-                                                  if (amount! >=
-                                                          controller
-                                                              .selectedMethod!
-                                                              .min_value &&
-                                                      amount! <=
-                                                          controller
-                                                              .selectedMethod!
-                                                              .max_value) {
-                                                    amountAfterFee = amount! -
-                                                        amount! *
-                                                            controller
-                                                                .selectedMethod!
-                                                                .commission /
-                                                            100;
-                                                    amountAfterFeeController
-                                                            .text =
-                                                        '${amountAfterFee}';
-                                                    if (controller
-                                                            .selectedTransferMethod!
-                                                            .wallet_name ==
-                                                        'cash') {
-                                                      debugPrint('hhhhhhh');
+                                        sizingInformation.deviceScreenType !=
+                                                DeviceScreenType.mobile
+                                            ? Expanded(
+                                                child: Divider(
+                                                  color:
+                                                      AppColors.secondaryColor,
+                                                ),
+                                              )
+                                            : SizedBox.shrink()
+                                      ]),
+                                ),
+                                50.height,
+                                formItem(
+                                    fieldTitle:
+                                        'chooseWalletWhichYouWillTransferFrom'
+                                            .tr,
+                                    field2Title:
+                                        'chooseWalletWhichYouWillTransferTo'.tr,
+                                    sizingInformation: sizingInformation,
+                                    autoFocusField: false,
+                                    child1: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                              color: AppColors.secondaryColor)),
+                                      child: Theme(
+                                        data: Theme.of(context).copyWith(
+                                            focusColor: Colors.transparent),
+                                        child: CustomDropDownButtonList(
+                                          value:
+                                              controller.selectedTransferMethod,
+                                          isReceive: false,
+                                          list: controller.transferMethodsList,
+                                          onChanged: (value) {
+                                            controller.resetAllDetails(false);
 
-                                                      exchangePrice = int.parse(
-                                                          homeController
-                                                              .adminValuesList
-                                                              .firstWhere(
-                                                                  (element) =>
-                                                                      element
-                                                                          .key ==
-                                                                      'transfer_price')
-                                                              .value);
-                                                      exchangeValue =
-                                                          exchangePrice *
-                                                              amount!;
-                                                    } else if (controller
-                                                            .selectedReceiveMethod!
-                                                            .wallet_name ==
-                                                        'cash') {
-                                                      debugPrint('nnn');
-                                                      exchangePrice = int.parse(
-                                                          homeController
-                                                              .adminValuesList
-                                                              .firstWhere(
-                                                                  (element) =>
-                                                                      element
-                                                                          .key ==
-                                                                      'receive_price')
-                                                              .value);
-                                                      exchangeValue =
-                                                          exchangePrice *
-                                                              amountAfterFee!;
-                                                    }
+                                            controller
+                                                .setSelectedTransferMethod(
+                                                    value!);
+                                            controller.updateReceiveList();
 
-                                                    debugPrint(
-                                                        'exxxx :: ${exchangeValue}');
-                                                    exchangeValueContoller
-                                                            .text =
-                                                        '${exchangeValue}';
-                                                  } else {
-                                                    amountAfterFeeController
-                                                        .text = '';
-                                                    amountController.text = '';
-                                                    exchangeValueContoller
-                                                        .text = '';
-                                                  }
-                                                }
-                                              },
-                                            ),
-                                          ),
-                                        )),
-                                    25.height,
-                                    formItem(
-                                      fieldTitle: 'enterAmount'.tr,
-                                      field2Title: 'amountWillBeAfterCutFee'
-                                              .tr +
-                                          ' ' +
-                                          '${controller.selectedMethod!.commission}' +
-                                          ' %',
-                                      fieldController: amountController,
-                                      field2Controller:
-                                          amountAfterFeeController,
-                                      disableConfirmTextField: true,
-                                      sizingInformation: sizingInformation,
-                                      textFieldType: TextFieldType.PHONE,
-                                      text2FieldType: TextFieldType.PHONE,
-                                      autoFocusField: false,
-                                      fieldIcon: Icons.monetization_on_outlined,
-                                      fieldKeyboardType: TextInputType.number,
-                                      field2KeyboardType: TextInputType.number,
-                                      autoValidateField:
-                                          AutovalidateMode.onUserInteraction,
-                                      isAmount: true,
-                                      onChangedfield: (value) {
-                                        if (value.onlyNumbers()) {
-                                          double val = double.parse(value);
-                                          amount = val;
+                                            controller.updateValues();
 
-                                          if (val >=
-                                                  controller.selectedMethod!
-                                                      .min_value &&
-                                              val <=
-                                                  controller.selectedMethod!
-                                                      .max_value) {
-                                            double valAfterFee = val -
-                                                val *
-                                                    controller.selectedMethod!
-                                                        .commission /
-                                                    100;
-                                            amountAfterFee = valAfterFee;
-                                            amountAfterFeeController.text =
-                                                '${valAfterFee}';
-                                            int exchangePrice = 0;
-                                            if (controller
-                                                    .selectedTransferMethod!
-                                                    .wallet_name ==
-                                                'cash') {
-                                              debugPrint('hhhhhhh');
-
-                                              exchangePrice = int.parse(
-                                                  homeController.adminValuesList
-                                                      .firstWhere((element) =>
-                                                          element.key ==
-                                                          'transfer_price')
-                                                      .value);
-                                              exchangeValue =
-                                                  exchangePrice * amount!;
-                                            } else if (controller
-                                                    .selectedReceiveMethod!
-                                                    .wallet_name ==
-                                                'cash') {
-                                              debugPrint('nnn');
-                                              exchangePrice = int.parse(
-                                                  homeController.adminValuesList
-                                                      .firstWhere((element) =>
-                                                          element.key ==
-                                                          'receive_price')
-                                                      .value);
-                                              exchangeValue = exchangePrice *
+                                            if (amount != null) {
+                                              amountAfterFee = amount! -
+                                                  amount! *
+                                                      controller.selectedMethod!
+                                                          .commission /
+                                                      100;
+                                              amountAfterFeeController.text =
+                                                  '${amountAfterFee}';
+                                              exchangeValue = int.parse(
+                                                      homeController
+                                                          .adminValuesList
+                                                          .firstWhere((element) =>
+                                                              element.key ==
+                                                              'selling_price')
+                                                          .value) *
                                                   amountAfterFee!;
-                                            }
-
-                                            debugPrint(
-                                                'exxxx :: ${exchangeValue}');
-                                            exchangeValueContoller.text =
-                                                '${exchangeValue}';
-                                          }
-                                        }
-                                      },
-                                      validatorfield2: (value) {
-                                        return null;
-                                      },
-                                      validatorfield: (value) {
-                                        if (value.onlyNumbers()) {
-                                          double val = double.parse(value!);
-
-                                          if (val >=
-                                                  controller.selectedMethod!
-                                                      .min_value &&
-                                              val <=
-                                                  controller.selectedMethod!
-                                                      .max_value) {
-                                            return null;
-                                          } else if (val <=
-                                              controller
-                                                  .selectedMethod!.min_value) {
-                                            return '${'amountMustBeAtLeast'.tr}  ${controller.selectedMethod!.min_value}';
-                                          } else if (val >=
-                                              controller
-                                                  .selectedMethod!.max_value) {
-                                            return '${'amountMustBeAtMost'.tr}  ${controller.selectedMethod!.max_value}';
-                                          }
-                                        } else {
-                                          amountController.text = '';
-                                          return 'pleaseEnterOnlyNumbers'.tr;
-                                        }
-                                        return null;
-                                      },
-                                      addText: true,
-                                      startAddText:
-                                          '${'minAmountCouldBeTransfered'.tr}  ',
-                                      middleAddText:
-                                          '${controller.selectedMethod!.min_value}',
-                                      endAddText: '',
-                                      addText2: true,
-                                      startAddText2:
-                                          '${'maxAmountCouldBeTransfered'.tr}  ',
-                                      middleAddText2:
-                                          '${controller.selectedMethod!.max_value}',
-                                      endAddText2: '',
-                                    ),
-                                    25.height,
-                                    (controller.selectedReceiveMethod!
-                                                    .wallet_name ==
-                                                'cash' ||
-                                            controller.selectedTransferMethod!
-                                                    .wallet_name ==
-                                                'cash')
-                                        ? formItem(
-                                            child2: SizedBox.shrink(),
-                                            fieldTitle: 'exchangeValue'.tr,
-                                            fieldController:
-                                                exchangeValueContoller,
-                                            disablePrimaryTextField: true,
-                                            sizingInformation:
-                                                sizingInformation,
-                                            textFieldType: TextFieldType.PHONE,
-                                            autoFocusField: false,
-                                            fieldIcon: Icons.money_outlined,
-                                            fieldKeyboardType:
-                                                TextInputType.number,
-                                            autoValidateField: AutovalidateMode
-                                                .onUserInteraction,
-                                            isAmount: false,
-                                            onChangedfield: (value) {},
-                                            addText: true,
-                                            startAddText: '',
-                                            middleAddText:
-                                                '${'syrianBound'.tr}',
-                                            endAddText: '',
-                                            addText2: false,
-                                            startAddText2: '',
-                                            middleAddText2: '',
-                                            endAddText2: '',
-                                          )
-                                        : SizedBox.shrink(),
-                                    50.height,
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        CustomButton2(
-                                          text: 'nextStep'.tr,
-                                          onTap: () {
-                                            if (formKey.currentState!
-                                                .validate()) {
-                                              controller.setAmount(
-                                                  amount!,
-                                                  amountAfterFee!,
-                                                  exchangeValue!);
-                                              controller.nextPage();
-                                            } else {
-                                              showCustomSnackBar(
-                                                  'pleaseFillAllFields'.tr);
+                                              exchangeValueContoller.text =
+                                                  '${exchangeValue}';
                                             }
                                           },
-                                          backgroundColor:
-                                              AppColors.primaryColor,
-                                          textColor: AppColors.lightPurple,
-                                          icon: Icons.arrow_forward_ios_rounded,
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                    5.height,
+                                    child2: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                              color: AppColors.secondaryColor)),
+                                      child: Theme(
+                                        data: Theme.of(context).copyWith(
+                                            focusColor: Colors.transparent),
+                                        child: CustomDropDownButtonList(
+                                          value:
+                                              controller.selectedReceiveMethod,
+                                          isReceive: true,
+                                          list: controller.receiveMethodsList,
+                                          onChanged: (value) {
+                                            controller.resetAllDetails(false);
+                                            controller.setSelectedReceiveMethod(
+                                                value!);
+                                            controller.updateValues();
+                                            int exchangePrice = 0;
+                                            if (amount != null) {
+                                              if (amount! >=
+                                                      controller.selectedMethod!
+                                                          .min_value &&
+                                                  amount! <=
+                                                      controller.selectedMethod!
+                                                          .max_value) {
+                                                amountAfterFee = amount! -
+                                                    amount! *
+                                                        controller
+                                                            .selectedMethod!
+                                                            .commission /
+                                                        100;
+                                                amountAfterFeeController.text =
+                                                    '${amountAfterFee}';
+                                                if (controller
+                                                        .selectedTransferMethod!
+                                                        .wallet_name ==
+                                                    'cash') {
+                                                  debugPrint('hhhhhhh');
+
+                                                  exchangePrice = int.parse(
+                                                      homeController
+                                                          .adminValuesList
+                                                          .firstWhere((element) =>
+                                                              element.key ==
+                                                              'transfer_price')
+                                                          .value);
+                                                  exchangeValue =
+                                                      exchangePrice * amount!;
+                                                } else if (controller
+                                                        .selectedReceiveMethod!
+                                                        .wallet_name ==
+                                                    'cash') {
+                                                  debugPrint('nnn');
+                                                  exchangePrice = int.parse(
+                                                      homeController
+                                                          .adminValuesList
+                                                          .firstWhere((element) =>
+                                                              element.key ==
+                                                              'receive_price')
+                                                          .value);
+                                                  exchangeValue =
+                                                      exchangePrice *
+                                                          amountAfterFee!;
+                                                }
+
+                                                debugPrint(
+                                                    'exxxx :: ${exchangeValue}');
+                                                exchangeValueContoller.text =
+                                                    '${exchangeValue}';
+                                              } else {
+                                                amountAfterFeeController.text =
+                                                    '';
+                                                amountController.text = '';
+                                                exchangeValueContoller.text =
+                                                    '';
+                                              }
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    )),
+                                25.height,
+                                formItem(
+                                  fieldTitle: 'enterAmount'.tr,
+                                  field2Title: 'amountWillBeAfterCutFee'.tr +
+                                      ' ' +
+                                      '${controller.selectedMethod!.commission}' +
+                                      ' %',
+                                  fieldController: amountController,
+                                  field2Controller: amountAfterFeeController,
+                                  disableConfirmTextField: true,
+                                  sizingInformation: sizingInformation,
+                                  textFieldType: TextFieldType.PHONE,
+                                  text2FieldType: TextFieldType.PHONE,
+                                  autoFocusField: false,
+                                  fieldIcon: Icons.monetization_on_outlined,
+                                  fieldKeyboardType: TextInputType.number,
+                                  field2KeyboardType: TextInputType.number,
+                                  autoValidateField:
+                                      AutovalidateMode.onUserInteraction,
+                                  isAmount: true,
+                                  onChangedfield: (value) {
+                                    if (value.onlyNumbers()) {
+                                      double val = double.parse(value);
+                                      amount = val;
+
+                                      if (val >=
+                                              controller
+                                                  .selectedMethod!.min_value &&
+                                          val <=
+                                              controller
+                                                  .selectedMethod!.max_value) {
+                                        double valAfterFee = val -
+                                            val *
+                                                controller.selectedMethod!
+                                                    .commission /
+                                                100;
+                                        amountAfterFee = valAfterFee;
+                                        amountAfterFeeController.text =
+                                            '${valAfterFee}';
+                                        int exchangePrice = 0;
+                                        if (controller.selectedTransferMethod!
+                                                .wallet_name ==
+                                            'cash') {
+                                          debugPrint('hhhhhhh');
+
+                                          exchangePrice = int.parse(
+                                              homeController.adminValuesList
+                                                  .firstWhere((element) =>
+                                                      element.key ==
+                                                      'transfer_price')
+                                                  .value);
+                                          exchangeValue =
+                                              exchangePrice * amount!;
+                                        } else if (controller
+                                                .selectedReceiveMethod!
+                                                .wallet_name ==
+                                            'cash') {
+                                          debugPrint('nnn');
+                                          exchangePrice = int.parse(
+                                              homeController.adminValuesList
+                                                  .firstWhere((element) =>
+                                                      element.key ==
+                                                      'receive_price')
+                                                  .value);
+                                          exchangeValue =
+                                              exchangePrice * amountAfterFee!;
+                                        }
+
+                                        debugPrint('exxxx :: ${exchangeValue}');
+                                        exchangeValueContoller.text =
+                                            '${exchangeValue}';
+                                      }
+                                    }
+                                  },
+                                  validatorfield2: (value) {
+                                    return null;
+                                  },
+                                  validatorfield: (value) {
+                                    if (value.onlyNumbers()) {
+                                      double val = double.parse(value!);
+
+                                      if (val >=
+                                              controller
+                                                  .selectedMethod!.min_value &&
+                                          val <=
+                                              controller
+                                                  .selectedMethod!.max_value) {
+                                        return null;
+                                      } else if (val <=
+                                          controller
+                                              .selectedMethod!.min_value) {
+                                        return '${'amountMustBeAtLeast'.tr}  ${controller.selectedMethod!.min_value}';
+                                      } else if (val >=
+                                          controller
+                                              .selectedMethod!.max_value) {
+                                        return '${'amountMustBeAtMost'.tr}  ${controller.selectedMethod!.max_value}';
+                                      }
+                                    } else {
+                                      amountController.text = '';
+                                      return 'pleaseEnterOnlyNumbers'.tr;
+                                    }
+                                    return null;
+                                  },
+                                  addText: true,
+                                  startAddText:
+                                      '${'minAmountCouldBeTransfered'.tr}  ',
+                                  middleAddText:
+                                      '${controller.selectedMethod!.min_value}',
+                                  endAddText: '',
+                                  addText2: true,
+                                  startAddText2:
+                                      '${'maxAmountCouldBeTransfered'.tr}  ',
+                                  middleAddText2:
+                                      '${controller.selectedMethod!.max_value}',
+                                  endAddText2: '',
+                                ),
+                                25.height,
+                                (controller.selectedReceiveMethod!
+                                                .wallet_name ==
+                                            'cash' ||
+                                        controller.selectedTransferMethod!
+                                                .wallet_name ==
+                                            'cash')
+                                    ? formItem(
+                                        child2: SizedBox.shrink(),
+                                        fieldTitle: 'exchangeValue'.tr,
+                                        fieldController: exchangeValueContoller,
+                                        disablePrimaryTextField: true,
+                                        sizingInformation: sizingInformation,
+                                        textFieldType: TextFieldType.PHONE,
+                                        autoFocusField: false,
+                                        fieldIcon: Icons.money_outlined,
+                                        fieldKeyboardType: TextInputType.number,
+                                        autoValidateField:
+                                            AutovalidateMode.onUserInteraction,
+                                        isAmount: false,
+                                        onChangedfield: (value) {},
+                                        addText: true,
+                                        startAddText: '',
+                                        middleAddText: '${'syrianBound'.tr}',
+                                        endAddText: '',
+                                        addText2: false,
+                                        startAddText2: '',
+                                        middleAddText2: '',
+                                        endAddText2: '',
+                                      )
+                                    : SizedBox.shrink(),
+                                50.height,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    CustomButton2(
+                                      text: 'nextStep'.tr,
+                                      onTap: () {
+                                        if (formKey.currentState!.validate()) {
+                                          controller.setAmount(amount!,
+                                              amountAfterFee!, exchangeValue!);
+                                          controller.nextPage();
+                                        } else {
+                                          showCustomSnackBar(
+                                              'pleaseFillAllFields'.tr);
+                                        }
+                                      },
+                                      backgroundColor: AppColors.primaryColor,
+                                      textColor: AppColors.lightPurple,
+                                      icon: Icons.arrow_forward_ios_rounded,
+                                    ),
                                   ],
                                 ),
-                              ),
-                            )
-                          ],
+                                5.height,
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],

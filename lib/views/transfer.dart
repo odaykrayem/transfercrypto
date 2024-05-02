@@ -42,6 +42,7 @@ class _TransferState extends State<Transfer> {
         // padding: const EdgeInsets.only(top: 35.0, bottom: 35.0),
         alignment: Alignment.center,
         child: Scaffold(
+          // backgroundColor: Colors.transparent,
           backgroundColor: Colors.grey[50],
           body: PageView(
               controller: controller.pageViewController,
