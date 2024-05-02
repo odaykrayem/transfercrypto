@@ -257,9 +257,11 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                             .text =
                                                         '${amountAfterFee}';
                                                     if (controller
-                                                        .selectedTransferMethod!
-                                                        .wallet_name
-                                                        .contains('cash')) {
+                                                            .selectedTransferMethod!
+                                                            .wallet_name ==
+                                                        'cash') {
+                                                      debugPrint('hhhhhhh');
+
                                                       exchangePrice = int.parse(
                                                           homeController
                                                               .adminValuesList
@@ -269,10 +271,14 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                                           .key ==
                                                                       'transfer_price')
                                                               .value);
+                                                      exchangeValue =
+                                                          exchangePrice *
+                                                              amount!;
                                                     } else if (controller
-                                                        .selectedReceiveMethod!
-                                                        .wallet_name
-                                                        .contains('cash')) {
+                                                            .selectedReceiveMethod!
+                                                            .wallet_name ==
+                                                        'cash') {
+                                                      debugPrint('nnn');
                                                       exchangePrice = int.parse(
                                                           homeController
                                                               .adminValuesList
@@ -282,10 +288,11 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                                           .key ==
                                                                       'receive_price')
                                                               .value);
+                                                      exchangeValue =
+                                                          exchangePrice *
+                                                              amountAfterFee!;
                                                     }
-                                                    exchangeValue =
-                                                        exchangePrice *
-                                                            amountAfterFee!;
+
                                                     debugPrint(
                                                         'exxxx :: ${exchangeValue}');
                                                     exchangeValueContoller
@@ -346,33 +353,36 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                 '${valAfterFee}';
                                             int exchangePrice = 0;
                                             if (controller
-                                                .selectedTransferMethod!
-                                                .wallet_name
-                                                .contains('cash')) {
+                                                    .selectedTransferMethod!
+                                                    .wallet_name ==
+                                                'cash') {
+                                              debugPrint('hhhhhhh');
+
                                               exchangePrice = int.parse(
                                                   homeController.adminValuesList
                                                       .firstWhere((element) =>
                                                           element.key ==
                                                           'transfer_price')
                                                       .value);
+                                              exchangeValue =
+                                                  exchangePrice * amount!;
                                             } else if (controller
-                                                .selectedReceiveMethod!
-                                                .wallet_name
-                                                .contains('cash')) {
+                                                    .selectedReceiveMethod!
+                                                    .wallet_name ==
+                                                'cash') {
+                                              debugPrint('nnn');
                                               exchangePrice = int.parse(
                                                   homeController.adminValuesList
                                                       .firstWhere((element) =>
                                                           element.key ==
                                                           'receive_price')
                                                       .value);
+                                              exchangeValue = exchangePrice *
+                                                  amountAfterFee!;
                                             }
 
-                                            exchangeValue =
-                                                exchangePrice * amountAfterFee!;
-
                                             debugPrint(
-                                                'exchange value :${exchangeValue}');
-
+                                                'exxxx :: ${exchangeValue}');
                                             exchangeValueContoller.text =
                                                 '${exchangeValue}';
                                           }
@@ -422,11 +432,11 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                     ),
                                     25.height,
                                     (controller.selectedReceiveMethod!
-                                                .wallet_name
-                                                .contains('cash') ||
+                                                    .wallet_name ==
+                                                'cash' ||
                                             controller.selectedTransferMethod!
-                                                .wallet_name
-                                                .contains('cash'))
+                                                    .wallet_name ==
+                                                'cash')
                                         ? formItem(
                                             child2: SizedBox.shrink(),
                                             fieldTitle: 'exchangeValue'.tr,
