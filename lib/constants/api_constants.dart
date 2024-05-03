@@ -1,9 +1,9 @@
 class ApiConstants {
-  // stastic const baseUrl = "https://cryptoadmin.transfercrypto.online/api/";
-  // static const imageUrl = "https://cryptoadmin.transfercrypto.online/storage/";
+  static const baseUrl = "https://cryptoadmin.transfercrypto.online/api/";
+  static const imageUrl = "https://cryptoadmin.transfercrypto.online/storage/";
 
-  static const baseUrl = "http://192.168.1.110:8000/api/";
-  static const imageUrl = "http://192.168.1.110:8000/storage/";
+  // static const baseUrl = "http://192.168.1.110:8000/api/";
+  // static const imageUrl = "http://192.168.1.110:8000/storage/";
 
   static const String register = "auth/register";
   static const String login = "auth/login";
