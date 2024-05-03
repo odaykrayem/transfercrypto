@@ -109,6 +109,15 @@ class TransactionDetails extends StatelessWidget {
                       icon1Color: Colors.greenAccent,
                       isLocale: true,
                     ),
+                    model.exchange_price != null
+                        ? rowWidget(
+                            title: 'exchangeValue'.tr,
+                            content: '${model.exchange_price}',
+                            icon1: Icons.money_rounded,
+                            icon1Color: Colors.greenAccent,
+                            isLocale: true,
+                          )
+                        : SizedBox.shrink(),
                     rowWidget(
                       title: 'payPrice'.tr,
                       content:

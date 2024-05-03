@@ -108,7 +108,7 @@ Map<String, String> arabic = {
   "pleaseEnterOnlyNumbers": "من فضلك أدخل أرقام صحيحة فقط",
   "selectWallet": "اختر محفظة",
   "cash": "عملة البلد أو الدولار",
-  "exchangeValue": "القيمة حسب سعر الصرف",
+  "exchangeValue": "القيمة حسب الصرف بالليرة السورية",
   "syrianBound": "ليرة سورية",
   //Transfer second step
   "yourDetails": "تفاصيلك",

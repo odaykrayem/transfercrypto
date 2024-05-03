@@ -7,6 +7,7 @@ import 'package:transfercrypto/routes/routes.dart';
 import 'package:transfercrypto/widgets/custom_gesture.dart';
 import '../constants/app_colors.dart';
 import '../data/nav_items_list.dart';
+import '../data/repository/home_repo.dart';
 import 'custom_nav_button.dart';
 import 'navbar_item.dart';
 
@@ -18,6 +19,7 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut<HomeController>(() => HomeController(repo: Get.find()));
+    Get.lazyPut<HomeRepo>(() => HomeRepo(apiClient: Get.find()));
     HomeController homeController = Get.find<HomeController>();
     // AuthController authController = Get.find<AuthController>();
 

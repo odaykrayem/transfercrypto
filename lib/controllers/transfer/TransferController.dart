@@ -320,6 +320,7 @@ class TransferController extends GetxController {
     Map<String, dynamic> data = {
       "send_amount": _inputAmount,
       "receive_amount": _inputAmountAfterFee,
+      "exchange_price": _exchangeValue,
       "commission": _selectedMethod!.commission,
       "from_wallet": _selectedMethod!.transfer_wallet_name,
       "from_wallet_icon": _selectedMethod!.transfer_wallet_icon,

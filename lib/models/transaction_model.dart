@@ -8,6 +8,7 @@ class TransactionModel {
   final int user_id;
   final double send_amount;
   final double receive_amount;
+  final double? exchange_price;
   final double commission;
   final String from_wallet;
   final String from_wallet_icon;
@@ -33,6 +34,7 @@ class TransactionModel {
     required this.user_id,
     required this.send_amount,
     required this.receive_amount,
+    this.exchange_price,
     required this.commission,
     required this.from_wallet,
     required this.from_wallet_icon,
@@ -60,6 +62,7 @@ class TransactionModel {
       'user_id': user_id,
       'send_amount': send_amount,
       'receive_amount': receive_amount,
+      'exchange_price': exchange_price,
       'commission': commission,
       'from_wallet': from_wallet,
       'from_wallet_icon': from_wallet_icon,
@@ -93,6 +96,9 @@ class TransactionModel {
       user_id: map['user_id'] as int,
       send_amount: double.parse('${map['send_amount']}'),
       receive_amount: double.parse('${map['receive_amount']}'),
+      exchange_price: map['exchange_price'] != null
+          ? double.parse('${map['exchange_price']}')
+          : map['exchange_price'],
       commission: double.parse('${map['commission']}'),
       from_wallet: map['from_wallet'] as String,
       from_wallet_icon: map['from_wallet_icon'] as String,
