@@ -30,7 +30,7 @@ jobs:
         run: flutter clean
         
       - name: Install dependencies
-        run: flutter pub get
+        run: flutter pub cache repair
 
       - name: Start Web Release Build
         run: flutter build web --web-renderer canvaskit  --release
