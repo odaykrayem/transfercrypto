@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<!--
+    https://transfercrypto.online/
+  -->
+
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="flutter_web">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  ß
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <title>flutter_web</title>
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="preload" href="main.dart.js" as="script">
+  <link rel="preload" href="splash/img/light-1x.png" as="image">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer=""></script>
+  <link rel="preload" href="http://localhost:51431/assets/assets/fonts/Outfit-Medium.ttf" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf" as="fetch"
+    crossorigin="">
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/notosanssymbols/v41/rP2up3q65FkAtHfwd-eIS2brbDN6gxP34F9jRRCe4W3gfQ8gavVFRkzrbQ.ttf"
+    as="fetch" crossorigin="">
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/notosansarabic/v18/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfyGyvu3CBFQLaig.ttf"
+    as="fetch" crossorigin="">
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf" as="fetch"
+    crossorigin="">
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf" as="fetch"
+    crossorigin="">
+
+  <link rel="preload" href="http://localhost:51431/assets/FontManifest.json" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/canvaskit/chromium/canvaskit.wasm" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/fonts/MaterialIcons-Regular.otf" as="fetch" crossorigin="">
+  <link rel="preload"
+    href="http://localhost:51431/assets/packages/syncfusion_flutter_datagrid/assets/font/UnsortIcon.ttf" as="fetch"
+    crossorigin="">
+  <link rel="preload"
+    href="http://localhost:51431/assets/packages/syncfusion_flutter_datagrid/assets/font/FilterIcon.ttf" as="fetch"
+    crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/logo1080.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/logo128.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/transfer_1.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/telegram.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/instagram.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/youtube.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/googleplay.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/whatsapp.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/facebook.png" as="fetch" crossorigin="">
+  <link rel="preload" href="http://localhost:51431/assets/assets/images/facebook.png" as="fetch" crossorigin="">
+  <link rel="stylesheet" type="text/css" href="splash/style.css">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <script src="splash/splash.js"></script>
+
+
+
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <style id="splash-screen-style">
+    html {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #ffffff;
+      background-size: 100% 100%;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .contain {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .stretch {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cover {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    .bottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+
+  <link rel="stylesheet" type="text/css" href="splash/style.css">
+  <script src="splash/splash.js"></script>
+</head>
+
+<body id="app-container">
+  <!-- showing image at center during splash -->
+
+
+  <script defer="">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { firebaseConfig } from ".firebase_json";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+  <script defer="">
+    window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
