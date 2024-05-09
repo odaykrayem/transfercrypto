@@ -27,4 +27,10 @@ List<NavBarItemModel> navigationItemsList = [
     iconData: Icons.menu_book_rounded,
     index: 3,
   ),
+  NavBarItemModel(
+    title: 'reviews',
+    navigationPath: SubRoutes.guide,
+    iconData: Icons.reviews,
+    index: 4,
+  ),
 ];

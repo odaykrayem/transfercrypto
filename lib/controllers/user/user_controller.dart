@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:transfercrypto/controllers/home/HomeController.dart';
 import 'package:get/get.dart';
-import '../../data/repository/home_repo.dart';
 import '../../data/repository/user_repo.dart';
 import '../../models/response_model.dart';
 import '../../models/user_model.dart';
-import '../../services/networking/print_response_info.dart';
 import '../auth/auth_controller.dart';
 
 class UserController extends GetxController {

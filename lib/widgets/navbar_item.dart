@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../constants/app_colors.dart';
 import '../models/navbar_item_model.dart';
+import '../routes/routes.dart';
 
 class NavBarItem extends StatelessWidget {
   final NavBarItemModel model;
@@ -27,7 +28,11 @@ class NavBarItem extends StatelessWidget {
         // locator<NavigationService>().navigateTo(navigationPath);
 
         debugPrint('index ${index}');
-        _homeController.changePage(index);
+        if (index != 4) {
+          _homeController.changePage(index);
+        } else {
+          Get.toNamed(Routes.getReviews());
+        }
         _homeController.closeDrawer();
       },
       child: Provider.value(

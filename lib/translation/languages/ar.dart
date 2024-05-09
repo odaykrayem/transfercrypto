@@ -6,6 +6,7 @@ Map<String, String> arabic = {
   "home": "الرئيسية",
   "transactions": "تحويلاتي",
   "aboutUs": "معلومات عنا",
+  "reviews": "التقييمات",
   //App Values
   "youCanNowTransferMoneyEasly":
       "تم إنشاء خدمة تحويل العملات المشفرة لتسهيل تحويل وتبادل الأموال بين محافظ التشفير والسحب في سوريا",
@@ -161,4 +162,15 @@ Map<String, String> arabic = {
   "statusMessage": "رسالة الحالة",
   "transferOPerationToYourAccountId": "معرف عملية التحويل إلى حسابك",
   "transferOPerationToYourAccountImage": "صورة وصل التحويل إلى حسابك",
+  //reviews
+  "ratingAndReviewsPageAreVerifiedAndFromPeopleWhoUseOurServices":
+      "هذه التقييمات تم التحقق منها وهي صادرة عن أشخاص قاموا بطلب خدماتنا.",
+  "addReview": "أضف تقييماً",
+  //review-card
+  "showLess": "أقل",
+  "showMore": "المزيد",
+  //add-review
+  "ok": "موافق",
+  "cancel": "إلغاء",
+  "reviewAdded": "تم إضافة تقييمك",
 };

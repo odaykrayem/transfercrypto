@@ -35,7 +35,9 @@ class EnterEmailPage extends StatelessWidget {
               title: 'invalidEmail'.tr);
         } else {
           authController.requestOtp(email);
-          Get.offNamed(Routes.getOtp(email, true));
+          Get.offNamed(Routes.getOtp(email, false));
+          // Get.offNamed(Routes.getOtp(
+          //                         'red1234hat@gmail.com', false));
         }
       }
     }
@@ -91,9 +93,9 @@ class EnterEmailPage extends StatelessWidget {
                             70.height,
                             CustomGesture(
                               onTap: () {
-                                Get.offNamed(Routes.getOtp(
-                                    'red1234hat@gmail.com', false));
-                                // _submit(authController);
+                                // Get.offNamed(Routes.getOtp(
+                                //     'red1234hat@gmail.com', false));
+                                _submit(authController);
                               },
                               child: Container(
                                 // width: 300,

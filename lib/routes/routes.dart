@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:get/route_manager.dart';
 import 'package:transfercrypto/controllers/home/HomeBinding.dart';
+import 'package:transfercrypto/controllers/reviews/ReviewsBinding.dart';
 import 'package:transfercrypto/extensions/bool_parsing.dart';
 import 'package:transfercrypto/views/enterEmail.dart';
 import 'package:transfercrypto/views/layout_template.dart';
@@ -9,6 +10,7 @@ import 'package:transfercrypto/views/login.dart';
 import 'package:transfercrypto/views/otp.dart';
 import 'package:transfercrypto/views/profile_view.dart';
 import 'package:transfercrypto/views/register.dart';
+import 'package:transfercrypto/views/reviews.dart';
 import 'package:transfercrypto/views/update_pass.dart';
 import '../screens/no_connection.dart';
 import '../screens/splash_screen.dart';
@@ -29,6 +31,7 @@ class Routes {
   static const String otp = "/f-otp";
   static const String updatePass = "/p-udate";
   static const String profile = "/c-profile";
+  static const String reviews = "/r-reviews";
 
   static String getMain() => main;
   static String getSplash() => splash;
@@ -41,6 +44,7 @@ class Routes {
       '$otp?email=$email&irp=$isRegisterProcess';
   static String getUpdatePass(String email) => '$updatePass?email=$email';
   static String getProfile() => profile;
+  static String getReviews() => reviews;
 
   // static String getTransactionDetails(String details) =>
   //     '$transactionDetails?details=${base64.encode(utf8.encode('$details'))}';
@@ -85,6 +89,11 @@ class Routes {
     GetPage(
       name: profile,
       page: () => ProfilePage(),
+    ),
+    GetPage(
+      name: reviews,
+      page: () => ReviewsPage(),
+      binding: ReviewsBinding(),
     ),
 
     // GetPage(

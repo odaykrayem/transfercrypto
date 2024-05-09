@@ -160,8 +160,6 @@ class TransferController extends GetxController {
 
   static TransferController get to => Get.find();
 
-  HomeController homeControler = Get.find<HomeController>();
-
   Map<String, String> _adminValueMap = {};
   Map<String, String> get adminValueMap => _adminValueMap;
   late PageController _pageViewController;
@@ -204,7 +202,7 @@ class TransferController extends GetxController {
     if (!_adminValueMap.isEmpty) {
       return;
     }
-    homeControler.adminValuesList.forEach((element) {
+    homeController.adminValuesList.forEach((element) {
       _adminValueMap[element.key] = element.value;
     });
     // _adminValueMap.forEach((key, value) {

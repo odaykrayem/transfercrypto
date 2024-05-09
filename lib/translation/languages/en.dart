@@ -6,6 +6,7 @@ Map<String, String> english = {
   "home": "Home",
   "transactions": "My Transfers",
   "aboutUs": "About Us",
+  "reviews": "Reviews",
   //App Values
   "youCanNowTransferMoneyEasly":
       "The cryptocurrency transfer service was created to facilitate the transfer and exchange of funds between crypto wallets and withdrawals in Syria",
@@ -165,4 +166,15 @@ Map<String, String> english = {
   "transferOPerationToYourAccountId": "ID ofTransfer oPeration to your account",
   "transferOPerationToYourAccountImage":
       "Image OfTransfer oPeration to your account",
+  //reviews
+  "ratingAndReviewsPageAreVerifiedAndFromPeopleWhoUseOurServices":
+      "Rating and reviews are verified and from people who use our services.",
+  "addReview": "",
+  //review-card
+  "showLess": "show less",
+  "showMore": "show more",
+  //add-review
+  "ok": "Ok",
+  "cancel": "Cancel",
+  "reviewAdded": "Review Added",
 };

@@ -20,6 +20,10 @@ class ApiConstants {
   static const String transactionsList = "v1/transactions_list";
   static const String addTransaction = "v1/add_transaction";
 
+  static const String reviewsList = "auth/reviews";
+  static const String addReview = "v1/add_review";
+  static const String setReviewed = "v1/set_reviewed";
+
   static const String walletToCashList = "v1/wallet_to_cash_list";
   static const String addWalletToCash = "v1/add_wallet_to_cash";
 
