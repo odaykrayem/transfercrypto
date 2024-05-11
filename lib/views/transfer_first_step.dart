@@ -239,7 +239,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                     controller
                                                             .selectedTransferMethod!
                                                             .wallet_name ==
-                                                        'syriatel-cash') {
+                                                        'syriatel-money') {
                                                   debugPrint('hhhhhhh');
 
                                                   exchangePrice = int.parse(
@@ -258,7 +258,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                     controller
                                                             .selectedReceiveMethod!
                                                             .wallet_name ==
-                                                        'syriatel-cash') {
+                                                        'syriatel-money') {
                                                   debugPrint('nnn');
                                                   exchangePrice = int.parse(
                                                       homeController
@@ -333,7 +333,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                 'cash' ||
                                             controller.selectedTransferMethod!
                                                     .wallet_name ==
-                                                'syriatel-cash') {
+                                                'syriatel-money') {
                                           debugPrint('hhhhhhh');
 
                                           exchangePrice = int.parse(
@@ -350,7 +350,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                 'cash' ||
                                             controller.selectedTransferMethod!
                                                     .wallet_name ==
-                                                'syriatel-cash') {
+                                                'syriatel-money') {
                                           debugPrint('nnn');
                                           exchangePrice = int.parse(
                                               homeController.adminValuesList
@@ -419,10 +419,10 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                             'cash' ||
                                         controller.selectedReceiveMethod!
                                                 .wallet_name ==
-                                            'syriatel-cash' ||
+                                            'syriatel-money' ||
                                         controller.selectedTransferMethod!
                                                 .wallet_name ==
-                                            'syriatel-cash')
+                                            'syriatel-money')
                                     ? formItem(
                                         child2: SizedBox.shrink(),
                                         fieldTitle: 'exchangeValue'.tr,

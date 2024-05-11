@@ -111,7 +111,7 @@ Map<String, String> arabic = {
   "cash": "عملة البلد أو الدولار",
   "exchangeValue": "القيمة حسب الصرف بالليرة السورية",
   "syrianBound": "ليرة سورية",
-  "syriatel-cash": "سيرياتل كاش",
+  "syriatel-money": "سيرياتل كاش",
   //Transfer second step
   "yourDetails": "تفاصيلك",
   "yourEmail": "بريدك الالكتروني",
