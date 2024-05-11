@@ -75,6 +75,12 @@ class NavBar extends StatelessWidget {
                           ),
                         ]
                       : [
+                          NavBarItem(
+                            model: navigationItemsList.last,
+                          ),
+                          const SizedBox(
+                            width: 60,
+                          ),
                           CustomNavButton(
                             title: 'login'.tr,
                             onButtonPressed: () {

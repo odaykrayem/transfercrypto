@@ -58,7 +58,7 @@ class CustomDropDownButtonList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            '${(item.wallet_name as String).contains('cash') ? 'cash'.tr : (item.wallet_name as String).tr}',
+                            '${(item.wallet_name as String) == 'cash' ? 'cash'.tr : (item.wallet_name as String).tr}',
                             style: const TextStyle(fontFamily: 'Outfit-Medium'),
                             overflow: TextOverflow.ellipsis,
                           ),

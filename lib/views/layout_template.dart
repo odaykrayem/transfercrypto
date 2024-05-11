@@ -83,38 +83,22 @@ class LayoutTemplate extends GetView<HomeController> {
                   //         ),
                   //       )
                   //     :
-                  SizedBox(
-                    height: sizingInformation.deviceScreenType ==
-                            DeviceScreenType.desktop
-                        ? Get.size.height - navBarHeight + 100
-                        : (controller.currentIndex.value == 0 ||
-                                controller.currentIndex.value == 2)
-                            ? Get.size.height
-                            : sizingInformation.deviceScreenType ==
-                                    DeviceScreenType.tablet
-                                ? Get.size.height + 100
-                                : Get.size.height + 500,
-                    child: Container(
-                      // color: sizingInformation.deviceScreenType ==
-                      //         DeviceScreenType.desktop
-                      //     ? Colors.red
-                      //     : (controller.currentIndex.value == 0 ||
-                      //             controller.currentIndex.value == 2)
-                      //         ? Colors.amber
-                      //         : sizingInformation.deviceScreenType ==
-                      //                 DeviceScreenType.tablet
-                      //             ? Colors.purple
-                      //             : Colors.blue,
-                      color: AppColors.lightPurple,
-                      alignment: Alignment.topCenter,
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxWidth: 1200,
-                        ),
-                        child: Navigator(
-                          key: Get.nestedKey(1),
-                          // initialRoute: '/no-connection',
-                          onGenerateRoute: controller.onGenerateRoute,
+                  Obx(
+                    () => SizedBox(
+                      height: calculateHeihgt(sizingInformation),
+                      child: Container(
+                        color: AppColors.lightPurple,
+                        // color: generateColor(sizingInformation),
+                        alignment: Alignment.topCenter,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            maxWidth: 1200,
+                          ),
+                          child: Navigator(
+                            key: Get.nestedKey(1),
+                            // initialRoute: '/no-connection',
+                            onGenerateRoute: controller.onGenerateRoute,
+                          ),
                         ),
                       ),
                     ),
@@ -127,5 +111,59 @@ class LayoutTemplate extends GetView<HomeController> {
         ),
       ),
     );
+  }
+
+  double calculateHeihgt(SizingInformation sizingInformation) {
+    debugPrint('screen Height: ${Get.size.height}');
+    debugPrint('screen Index: ${controller.currentIndex.value}');
+    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+      if (controller.currentIndex.value == 0 ||
+          controller.currentIndex.value == 2) {
+        return Get.size.height - navBarHeight + 10;
+      } else {
+        debugPrint(
+            'screen Part Height: ${Get.size.height - navBarHeight + 100}');
+        if (Get.size.height < 610) {
+          return Get.size.height + 60;
+        } else {
+          return Get.size.height - navBarHeight + 10;
+        }
+      }
+    } else if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
+      return Get.size.height + 100;
+    } else {
+      if (controller.currentIndex.value == 0 ||
+          controller.currentIndex.value == 2) {
+        return Get.size.height;
+      } else {
+        return Get.size.height + 500;
+      }
+    }
+  }
+
+  Color generateColor(SizingInformation sizingInformation) {
+    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+      if (controller.currentIndex.value == 0 ||
+          controller.currentIndex.value == 2) {
+        return Colors.amber;
+      } else {
+        debugPrint(
+            'screen Part Height: ${Get.size.height - navBarHeight + 100}');
+        if (Get.size.height < 610) {
+          return Colors.red;
+        } else {
+          return Colors.green;
+        }
+      }
+    } else if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
+      return Colors.purple;
+    } else {
+      if (controller.currentIndex.value == 0 ||
+          controller.currentIndex.value == 2) {
+        return Colors.lightBlueAccent;
+      } else {
+        return Colors.pink;
+      }
+    }
   }
 }

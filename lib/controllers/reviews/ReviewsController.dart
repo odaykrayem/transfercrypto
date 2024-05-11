@@ -81,7 +81,6 @@ class ReviewsController extends GetxController {
     try {
       Response response = await repo.getReviewsList();
       printResponseInfo(response, "Reviews List");
-      debugPrint('userrrr :: ${response.body['data'][0]['user']['f_name']}');
       if (response.statusCode == 200) {
         _reviewsList = []; //initialze to not repeat data
         _ratingZero = response.body['0'] as double;

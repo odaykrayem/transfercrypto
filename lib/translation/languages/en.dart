@@ -113,6 +113,7 @@ Map<String, String> english = {
   "cash": "Country currency or dollar",
   "exchangeValue": "Exchange Value",
   "syrianBound": "Syrian Bound",
+  "syriatel-cash": "Syriatel Cash",
   //Transfer second step
   "yourDetails": "Your Details",
   "yourEmail": "Your Email",
