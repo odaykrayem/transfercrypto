@@ -144,12 +144,12 @@ class _TransferSecondStepState extends State<TransferSecondStep> {
                                   formItem(
                                       fieldTitle: 'yourEmail'.tr,
                                       field2Title: (controller
-                                                  .selectedReceiveMethod!
-                                                  .wallet_name
-                                                  .contains('cash') ||
+                                                      .selectedReceiveMethod!
+                                                      .wallet_name ==
+                                                  'cash' ||
                                               controller.selectedTransferMethod!
-                                                  .wallet_name
-                                                  .contains('cash'))
+                                                      .wallet_name ==
+                                                  'cash')
                                           ? 'enterYourPhoneConsistOf10DigitsAndBeginWith09'
                                               .tr
                                           : '',
@@ -162,16 +162,17 @@ class _TransferSecondStepState extends State<TransferSecondStep> {
                                       fieldIcon: Icons.mark_email_read_outlined,
                                       field2Icon: Icons.phone,
                                       child2: (controller.selectedReceiveMethod!
-                                                  .wallet_name
-                                                  .contains('cash') ||
+                                                      .wallet_name ==
+                                                  'cash' ||
                                               controller.selectedTransferMethod!
-                                                  .wallet_name
-                                                  .contains('cash'))
+                                                      .wallet_name ==
+                                                  'cash')
                                           ? null
                                           : SizedBox.shrink()),
                                   25.height,
-                                  controller.selectedReceiveMethod!.wallet_name
-                                          .contains('cash')
+                                  controller.selectedReceiveMethod!
+                                              .wallet_name ==
+                                          'cash'
                                       ? formItem(
                                           fieldTitle:
                                               'enterYourFullNameAsItOnId'.tr,
@@ -187,8 +188,9 @@ class _TransferSecondStepState extends State<TransferSecondStep> {
                                           field2Icon: Icons.place_outlined)
                                       : SizedBox.shrink(),
                                   25.height,
-                                  !controller.selectedReceiveMethod!.wallet_name
-                                          .contains('cash')
+                                  !(controller.selectedReceiveMethod!
+                                              .wallet_name ==
+                                          'cash')
                                       ? formItem(
                                           fieldTitle: 'enterYourAccountId'.tr +
                                               '  ' +
