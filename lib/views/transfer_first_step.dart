@@ -455,8 +455,10 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                       text: 'nextStep'.tr,
                                       onTap: () {
                                         if (formKey.currentState!.validate()) {
+                                          debugPrint(
+                                              '${amount},${amountAfterFee}, ${exchangeValue}');
                                           controller.setAmount(amount!,
-                                              amountAfterFee!, exchangeValue!);
+                                              amountAfterFee!, exchangeValue);
                                           controller.nextPage();
                                         } else {
                                           showCustomSnackBar(

@@ -123,7 +123,7 @@ class LayoutTemplate extends GetView<HomeController> {
       } else {
         debugPrint(
             'screen Part Height: ${Get.size.height - navBarHeight + 100}');
-        if (Get.size.height < 610) {
+        if (Get.size.height < 700) {
           return Get.size.height + 60;
         } else {
           return Get.size.height - navBarHeight + 10;

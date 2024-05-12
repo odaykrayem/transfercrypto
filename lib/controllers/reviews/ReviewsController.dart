@@ -52,10 +52,10 @@ class ReviewsController extends GetxController {
   double _ratingFive = 0;
   double get ratingFive => _ratingFive;
 
-  double _ratingCount = 200;
+  double _ratingCount = 0;
   double get ratingCount => _ratingCount;
 
-  double _allRating = 5.0;
+  double _allRating = 1.0;
   double get allRating => _allRating;
 
   bool _isLoaded = false;
