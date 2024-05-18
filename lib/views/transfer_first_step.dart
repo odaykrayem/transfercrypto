@@ -217,13 +217,20 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                 value!);
                                             controller.updateValues();
                                             int exchangePrice = 0;
+                                            debugPrint('ooooo1');
+                                            debugPrint('amount ${amount}');
+
                                             if (amount != null) {
+                                              debugPrint('ooooo2');
+
                                               if (amount! >=
                                                       controller.selectedMethod!
                                                           .min_value &&
                                                   amount! <=
                                                       controller.selectedMethod!
                                                           .max_value) {
+                                                debugPrint('ooooo3');
+
                                                 amountAfterFee = amount! -
                                                     amount! *
                                                         controller
@@ -232,6 +239,8 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                         100;
                                                 amountAfterFeeController.text =
                                                     '${amountAfterFee}';
+                                                debugPrint(
+                                                    'recieve Method name${controller.selectedReceiveMethod!.wallet_name}');
                                                 if (controller
                                                             .selectedTransferMethod!
                                                             .wallet_name ==
@@ -240,7 +249,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                             .selectedTransferMethod!
                                                             .wallet_name ==
                                                         'syriatel-money') {
-                                                  debugPrint('hhhhhhh');
+                                                  debugPrint('ooooo4');
 
                                                   exchangePrice = int.parse(
                                                       homeController
@@ -259,7 +268,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                             .selectedReceiveMethod!
                                                             .wallet_name ==
                                                         'syriatel-money') {
-                                                  debugPrint('nnn');
+                                                  debugPrint('ooooo5');
                                                   exchangePrice = int.parse(
                                                       homeController
                                                           .adminValuesList
@@ -312,6 +321,7 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                     if (value.onlyNumbers()) {
                                       double val = double.parse(value);
                                       amount = val;
+                                      debugPrint('zzz-1');
 
                                       if (val >=
                                               controller
@@ -319,6 +329,8 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                           val <=
                                               controller
                                                   .selectedMethod!.max_value) {
+                                        debugPrint('zzz0');
+
                                         double valAfterFee = val -
                                             val *
                                                 controller.selectedMethod!
@@ -328,13 +340,19 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                         amountAfterFeeController.text =
                                             '${valAfterFee}';
                                         int exchangePrice = 0;
+                                        debugPrint('zzz1');
+                                        debugPrint(
+                                            'zzz${controller.selectedTransferMethod!.wallet_name == 'cash' || controller.selectedTransferMethod!.wallet_name == 'syriatel-money'}');
+
+                                        debugPrint(
+                                            'zzz${controller.selectedReceiveMethod!.wallet_name == 'cash' || controller.selectedTransferMethod!.wallet_name == 'syriatel-money'}');
                                         if (controller.selectedTransferMethod!
                                                     .wallet_name ==
                                                 'cash' ||
                                             controller.selectedTransferMethod!
                                                     .wallet_name ==
                                                 'syriatel-money') {
-                                          debugPrint('hhhhhhh');
+                                          debugPrint('zzz2');
 
                                           exchangePrice = int.parse(
                                               homeController.adminValuesList
@@ -348,10 +366,10 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                                     .selectedReceiveMethod!
                                                     .wallet_name ==
                                                 'cash' ||
-                                            controller.selectedTransferMethod!
+                                            controller.selectedReceiveMethod!
                                                     .wallet_name ==
                                                 'syriatel-money') {
-                                          debugPrint('nnn');
+                                          debugPrint('zzz3');
                                           exchangePrice = int.parse(
                                               homeController.adminValuesList
                                                   .firstWhere((element) =>
@@ -362,7 +380,8 @@ class _TransferFirstStepState extends State<TransferFirstStep> {
                                               exchangePrice * amountAfterFee!;
                                         }
 
-                                        debugPrint('exxxx :: ${exchangeValue}');
+                                        debugPrint(
+                                            'exxxx2 :: ${exchangeValue}');
                                         exchangeValueContoller.text =
                                             '${exchangeValue}';
                                       }
