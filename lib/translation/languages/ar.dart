@@ -125,7 +125,7 @@ Map<String, String> arabic = {
   "our": "الخاص بنا",
   "accountDetails": "تفاصيل حساب",
   "pleaseMakePaymentToOurAccountAndEnterYourPaymentDetailsInTheRelatedField":
-      "يرجى إجراء الدفع لحسابنا وإدراج تفاصيل الدفع الخاصة بك في الحقل أدناه أو أدخل صورة كود التحويل",
+      "يرجى إجراء الدفع لحسابنا وإدراج تفاصيل الدفع الخاصة بك في الحقل أدناه أو اختر لقطة شاشة لعملية التحويل",
   "ourAccountId": "عنوان محفظتنا",
   "codeCoppied": "تم نسخ رمز المحفظة",
   "infoCopied": "تم نسخ المعلومات إلى الحافظة ",
@@ -141,7 +141,7 @@ Map<String, String> arabic = {
   "pleaseChooseReceiptImage": "يرجى اختيار صورة وصل التحويل",
   "pickReceiptImage": "اختر صورة الوصل",
   "chooseImage": "اختر صورة",
-  "pickOperationCodeImage": "اختر صورة كود التحويل",
+  "pickOperationCodeImage": "تحميل لقطة شاشة لعملية لتحويل",
   "confirm": "تأكيد",
 
   //Transactions Table :
