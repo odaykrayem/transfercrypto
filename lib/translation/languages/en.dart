@@ -132,6 +132,7 @@ Map<String, String> english = {
   "codeCoppied": "Code Coppied",
   "infoCopied": "Info Copied",
   "enterPaymentCodeThatYouDid": "Enter your payment details",
+  "enterPaymentImageThatYouDid": "Enter payment code image or screenshot",
   "transferMoneyAsCashByHaramAndAddTranferReceiptInTheFieldBelow":
       "Send the amount through Al-Haram Company or the transfer offices using the following information, attaching a copy of the transfer receipt in the designated field Or contact us via WhatsApp",
   "ourTransferInfo": "Our transfer info",
@@ -141,6 +142,8 @@ Map<String, String> english = {
   "chooseReceiptImage": "Choose receipt image",
   "pleaseChooseReceiptImage": "Please choose receipt image",
   "pickReceiptImage": "Pick receipt image",
+  "chooseImage": "Choose Image",
+  "pickOperationCodeImage": "Pick Operation Code Image",
   "confirm": "Confirm",
 
   //Transactions Table :

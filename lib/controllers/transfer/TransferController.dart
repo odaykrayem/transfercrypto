@@ -125,6 +125,15 @@ class TransferController extends GetxController {
   bool _receiptImageSelected = false;
   bool get receiptImageSelected => _receiptImageSelected;
 
+  XFile? _userCodeImage;
+  XFile? get userCodeImage => _userCodeImage;
+
+  String? _userCodeImagePath;
+  String? get userCodeImagePath => _userCodeImagePath;
+
+  bool _codeImageSelected = false;
+  bool get codeImageSelected => _codeImageSelected;
+
   void setReceiptImageSelected(
       bool i, XFile userReceiptImage, String userReceiptImagePath) {
     // debugPrint('image picked2 ${userReceiptImagePath}');
@@ -135,12 +144,24 @@ class TransferController extends GetxController {
     update();
   }
 
+  void setCodeImageSelected(
+      bool i, XFile userCodeImage, String userCodeImagePath) {
+    // debugPrint('image picked2 ${userReceiptImagePath}');
+
+    _codeImageSelected = i;
+    _userCodeImage = userCodeImage;
+    _userCodeImagePath = userCodeImagePath;
+    update();
+  }
+
   void setThirdStepDetails({
     required String? userOperationCode,
     required XFile? userReceiptImage,
+    required XFile? userCodeImage,
   }) {
     _inputUserOperationCode = userOperationCode;
     _userReceiptImage = userReceiptImage;
+    _userCodeImage = userCodeImage;
   }
 
   void resetAllDetails(bool withAmount) {
@@ -151,6 +172,7 @@ class TransferController extends GetxController {
     _inputUserWalletId = null;
     _inputUserOperationCode = null;
     _userReceiptImage = null;
+    _userCodeImage = null;
     if (withAmount) {
       _inputAmount = null;
       _inputAmountAfterFee = null;
@@ -312,7 +334,8 @@ class TransferController extends GetxController {
     }
   }
 
-  Future<ResponseModel> addTransaction(bool isCTW, Uint8List? imageData) async {
+  Future<ResponseModel> addTransaction(
+      bool isCTW, Uint8List? receiptimageData, Uint8List? codeImageData) async {
     _addLoading = true;
     update();
     Map<String, dynamic> data = {
@@ -326,7 +349,7 @@ class TransferController extends GetxController {
       "to_wallet_icon": _selectedMethod!.receive_wallet_icon,
       "admin_wallet": _selectedMethod!.admin_wallet_name,
       "user_wallet_id": _inputUserWalletId,
-      "user_op_code": _inputUserOperationCode,
+      "user_op_code": _inputUserOperationCode ?? null,
       "user_full_name": _inputUserFullName,
       "user_phone": _inputUserPhone,
       "user_place": _inputUserCity,
@@ -334,8 +357,10 @@ class TransferController extends GetxController {
     };
     late ResponseModel responseModel;
     try {
-      Response response =
-          await repo.addTransaction(data: data, imageData: imageData);
+      Response response = await repo.addTransaction(
+          data: data,
+          receiptimageData: receiptimageData,
+          codeImageData: codeImageData);
       // printResponseInfo(response, 'Add transaction');
       if (response.statusCode == 200 || response.statusCode == 201) {
         responseModel = ResponseModel(true, 'sucess'.tr);
@@ -364,13 +389,13 @@ class TransferController extends GetxController {
 }
 
 //  Future<ResponseModel> addCTW(
-//       Map<String, dynamic> data, File image, Uint8List imageData) async {
+//       Map<String, dynamic> data, File image, Uint8List receiptimageData) async {
 //     _addLoading = true;
 //     update();
 //     late ResponseModel responseModel;
 //     // debugPrint('ctw cont ${image.path}');
 //     try {
-//       Response response = await repo.addCTW(data, image, imageData);
+//       Response response = await repo.addCTW(data, image, receiptimageData);
 //       printResponseInfo(response, 'Add CTW');
 //       if (response.statusCode == 200 || response.statusCode == 201) {
 //         debugPrint('Con: Add Ctw');

@@ -33,8 +33,14 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
 
   late TextEditingController userOperationCodeController;
   File? userReceiptImage;
-  XFile? pickedFile;
-  String? imagePath;
+  XFile? pickedReceiptImageFile;
+  String? receiptImagePath;
+
+  File? userCodeImage;
+  XFile? pickedCodeImageFile;
+  String? codeImagePath;
+
+  bool chooseOperationImage = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,14 +56,22 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
     userOperationCode = transferController.inputUserOperationCode;
     userOperationCodeController.text = userOperationCode ?? '';
     debugPrint('userRImage :: ${transferController.userReceiptImage == null}');
-    pickedFile = transferController.userReceiptImage;
+    pickedReceiptImageFile = transferController.userReceiptImage;
+    pickedCodeImageFile = transferController.userCodeImage;
 
     void _submit(TransferController controller, bool isCTW) async {
-      Uint8List? imageData;
+      Uint8List? receiptImageData;
+      Uint8List? codeImageData;
       if (isCTW) {
-        imageData = await pickedFile!.readAsBytes();
+        receiptImageData = await pickedReceiptImageFile!.readAsBytes();
       }
-      controller.addTransaction(isCTW, imageData).then((response) {
+      if (chooseOperationImage) {
+        debugPrint('Choose Operation image');
+        codeImageData = await pickedCodeImageFile!.readAsBytes();
+      }
+      controller
+          .addTransaction(isCTW, receiptImageData, codeImageData)
+          .then((response) {
         if (response.isSuccess) {
           showCustomSnackBar('successOperation'.tr, isError: false, title: '');
           controller.resetAllDetails(true);
@@ -167,7 +181,9 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                                           controller.setThirdStepDetails(
                                             userOperationCode:
                                                 userOperationCode,
-                                            userReceiptImage: pickedFile,
+                                            userReceiptImage:
+                                                pickedReceiptImageFile,
+                                            userCodeImage: pickedCodeImageFile,
                                           );
 
                                           controller.previousPage();
@@ -189,13 +205,17 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                                             controller.setThirdStepDetails(
                                               userOperationCode:
                                                   userOperationCode,
-                                              userReceiptImage: pickedFile,
+                                              userReceiptImage:
+                                                  pickedReceiptImageFile,
+                                              userCodeImage:
+                                                  pickedCodeImageFile,
                                             );
                                             if (controller
                                                 .selectedTransferMethod!
                                                 .wallet_name
                                                 .contains('cash')) {
-                                              if (pickedFile == null) {
+                                              if (pickedReceiptImageFile ==
+                                                  null) {
                                                 showCustomSnackBar(
                                                     'pleaseChooseReceiptImage'
                                                         .tr);
@@ -224,26 +244,35 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                                                     onCancel: () {});
                                               }
                                             } else {
-                                              Get.defaultDialog(
-                                                  textCancel: 'noEdit'.tr,
-                                                  textConfirm: 'yesIamSure'.tr,
-                                                  title: '',
-                                                  contentPadding:
-                                                      const EdgeInsets.all(50),
-                                                  titlePadding:
-                                                      const EdgeInsets.all(0),
-                                                  middleText:
-                                                      'areYouSureAboutInfoYouEntered'
-                                                          .tr,
-                                                  cancelTextColor:
-                                                      Colors.red[200],
-                                                  confirmTextColor:
-                                                      Colors.white,
-                                                  onConfirm: () {
-                                                    _submit(controller, false);
-                                                    Get.back();
-                                                  },
-                                                  onCancel: () {});
+                                              if (pickedCodeImageFile == null) {
+                                                showCustomSnackBar(
+                                                    'chooseImage'.tr);
+                                              } else {
+                                                Get.defaultDialog(
+                                                    textCancel: 'noEdit'.tr,
+                                                    textConfirm:
+                                                        'yesIamSure'.tr,
+                                                    title: '',
+                                                    contentPadding:
+                                                        const EdgeInsets.all(
+                                                            50),
+                                                    titlePadding:
+                                                        const EdgeInsets.all(0),
+                                                    middleText:
+                                                        'areYouSureAboutInfoYouEntered'
+                                                            .tr,
+                                                    cancelTextColor:
+                                                        Colors.red[200],
+                                                    confirmTextColor:
+                                                        Colors.white,
+                                                    onConfirm: () {
+                                                      _submit(
+                                                          controller, false);
+                                                      Get.back();
+                                                    },
+                                                    onCancel: () {});
+                                              }
+                                              ;
                                             }
                                           } else {
                                             showCustomSnackBar(
@@ -273,6 +302,7 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
   Widget wtwAndwtc(
       TransferController controller, SizingInformation sizingInformation) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         formItem(
             fieldTitle: Get.locale != Locale('ar')
@@ -324,15 +354,86 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
               ],
             ))),
         25.height,
-        formItem(
-            fieldTitle: 'enterPaymentCodeThatYouDid'.tr,
-            field2Title: ''.tr,
-            autoFocusField: false,
-            sizingInformation: sizingInformation,
-            fieldController: userOperationCodeController,
-            textFieldType: TextFieldType.NAME,
-            fieldIcon: Icons.payment,
-            child2: SizedBox.shrink())
+        SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: CheckboxListTile(
+                      value: chooseOperationImage,
+                      onChanged: (value) {
+                        setState(() {
+                          chooseOperationImage = value!;
+                        });
+                      })),
+              Expanded(
+                flex: 5,
+                child: Text(
+                  '${'enterPaymentImageThatYouDid'.tr}',
+                  softWrap: true,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+        ),
+        25.height,
+        !chooseOperationImage
+            ? formItem(
+                fieldTitle: 'enterPaymentCodeThatYouDid'.tr,
+                field2Title: ''.tr,
+                autoFocusField: false,
+                sizingInformation: sizingInformation,
+                fieldController: userOperationCodeController,
+                textFieldType: TextFieldType.NAME,
+                fieldIcon: Icons.payment,
+                child2: SizedBox.shrink())
+            : formItem(
+                fieldTitle: 'chooseImage'.tr,
+                field2Title: '',
+                sizingInformation: sizingInformation,
+                autoFocusField: false,
+                child1: Container(
+                  child: (!controller.codeImageSelected ||
+                          controller.userCodeImage == null)
+                      ? Container(
+                          alignment: Alignment.center,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _getCodeImageFromGallery(controller);
+                            },
+                            child: Text('pickOperationCodeImage'.tr),
+                          ),
+                        )
+                      : Column(
+                          children: [
+                            GetBuilder<TransferController>(
+                                builder: (controller) {
+                              return Container(
+                                  child: ImageNetwork(
+                                key: ValueKey(Random().nextInt(100)),
+                                height: 300,
+                                width: 300,
+                                fitAndroidIos: BoxFit.contain,
+                                fitWeb: BoxFitWeb.cover,
+                                image: controller.userCodeImagePath!,
+                              ));
+                            }),
+                            10.height,
+                            Container(
+                              alignment: Alignment.center,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _getCodeImageFromGallery(controller);
+                                },
+                                child: Text('pickOperationCodeImage'.tr),
+                              ),
+                            )
+                          ],
+                        ),
+                ),
+                child2: SizedBox.shrink()),
       ],
     );
   }
@@ -410,7 +511,7 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                       alignment: Alignment.center,
                       child: ElevatedButton(
                         onPressed: () {
-                          _getFromGallery(controller);
+                          _getReceiptImageFromGallery(controller);
                         },
                         child: Text('pickReceiptImage'.tr),
                       ),
@@ -433,7 +534,7 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                           alignment: Alignment.center,
                           child: ElevatedButton(
                             onPressed: () {
-                              _getFromGallery(controller);
+                              _getReceiptImageFromGallery(controller);
                             },
                             child: Text('pickReceiptImage'.tr),
                           ),
@@ -489,18 +590,33 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
     );
   }
 
-  _getFromGallery(TransferController controller) async {
-    pickedFile = await ImagePicker().pickImage(
+  _getReceiptImageFromGallery(TransferController controller) async {
+    pickedReceiptImageFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
       maxWidth: 1800,
       maxHeight: 1800,
     );
-    if (pickedFile != null) {
+    if (pickedReceiptImageFile != null) {
       debugPrint('image picked1');
-      userReceiptImage = File(pickedFile!.path);
-      imagePath = pickedFile!.path;
+      userReceiptImage = File(pickedReceiptImageFile!.path);
+      receiptImagePath = pickedReceiptImageFile!.path;
       controller.setReceiptImageSelected(
-          true, pickedFile!, userReceiptImage!.path);
+          true, pickedReceiptImageFile!, userReceiptImage!.path);
+    }
+  }
+
+  _getCodeImageFromGallery(TransferController controller) async {
+    pickedCodeImageFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 1800,
+      maxHeight: 1800,
+    );
+    if (pickedCodeImageFile != null) {
+      debugPrint('image picked2');
+      userCodeImage = File(pickedCodeImageFile!.path);
+      codeImagePath = pickedCodeImageFile!.path;
+      controller.setCodeImageSelected(
+          true, pickedCodeImageFile!, userCodeImage!.path);
     }
   }
 }

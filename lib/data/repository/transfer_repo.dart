@@ -19,14 +19,33 @@ class TransferRepo extends GetxService {
 
   Future<Response> addTransaction({
     required Map<String, dynamic> data,
-    required Uint8List? imageData,
+    required Uint8List? receiptimageData,
+    required Uint8List? codeImageData,
   }) async {
     late Map<String, dynamic> allData;
-    if (imageData != null) {
+
+    if (receiptimageData != null) {
       try {
-        String base64Image = base64Encode(imageData);
+        String base64Image = base64Encode(receiptimageData);
         Map<String, dynamic> newData = {
           'user_image': base64Image,
+        };
+
+        newData.addAll(data);
+        allData = {}
+          ..addAll(newData)
+          ..addAll(data);
+      } catch (e) {
+        debugPrint('transaction repo catch 1');
+
+        e.printError();
+      }
+    } else if (codeImageData != null) {
+      debugPrint('upload Image 2');
+      try {
+        String base64Image = base64Encode(codeImageData);
+        Map<String, dynamic> newData = {
+          'user_op_image': base64Image,
         };
 
         newData.addAll(data);
@@ -58,10 +77,10 @@ class TransferRepo extends GetxService {
   }
 
   Future<Response> addCTW(
-      Map<String, dynamic> data, File image, Uint8List imageData) async {
+      Map<String, dynamic> data, File image, Uint8List receiptimageData) async {
     late Map<String, dynamic> allData;
     try {
-      String base64Image = base64Encode(imageData);
+      String base64Image = base64Encode(receiptimageData);
 
       debugPrint('ctw repo catch1');
       Map<String, dynamic> newData = {

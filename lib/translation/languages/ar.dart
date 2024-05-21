@@ -125,11 +125,12 @@ Map<String, String> arabic = {
   "our": "الخاص بنا",
   "accountDetails": "تفاصيل حساب",
   "pleaseMakePaymentToOurAccountAndEnterYourPaymentDetailsInTheRelatedField":
-      "يرجى إجراء الدفع لحسابنا وإدراج تفاصيل الدفع الخاصة بك في الحقل أدناه",
+      "يرجى إجراء الدفع لحسابنا وإدراج تفاصيل الدفع الخاصة بك في الحقل أدناه أو أدخل صورة كود التحويل",
   "ourAccountId": "عنوان محفظتنا",
   "codeCoppied": "تم نسخ رمز المحفظة",
   "infoCopied": "تم نسخ المعلومات إلى الحافظة ",
   "enterPaymentCodeThatYouDid": "أدخل تفاصيل الدفع الخاصة بك",
+  "enterPaymentImageThatYouDid": "اختر صورة تفاصيل الدفعة",
   "transferMoneyAsCashByHaramAndAddTranferReceiptInTheFieldBelow":
       "أرسل المبلغ عن طريق شركة الهرم أو مكاتب التحويل باستخدام المعلومات التالية مع إرفاق نسخة من إيصال التحويل في الحقل المخصص أو تواصل معنا عبر الواتساب",
   "ourTransferInfo": "معلومات التحويل الخاصة بنا",
@@ -139,6 +140,8 @@ Map<String, String> arabic = {
   "chooseReceiptImage": "اختر صورة وصل التحويل",
   "pleaseChooseReceiptImage": "يرجى اختيار صورة وصل التحويل",
   "pickReceiptImage": "اختر صورة الوصل",
+  "chooseImage": "اختر صورة",
+  "pickOperationCodeImage": "اختر صورة كود التحويل",
   "confirm": "تأكيد",
 
   //Transactions Table :

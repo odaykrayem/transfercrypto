@@ -17,6 +17,7 @@ class TransactionModel {
   final String? admin_wallet;
   final String? user_wallet_id;
   final String? user_op_code;
+  final String? user_op_image;
   final String? user_image;
   final String? user_full_name;
   final String? user_phone;
@@ -43,6 +44,7 @@ class TransactionModel {
     required this.admin_wallet,
     this.user_wallet_id,
     this.user_op_code,
+    this.user_op_image,
     this.user_image,
     this.user_full_name,
     this.user_phone,
@@ -71,6 +73,7 @@ class TransactionModel {
       'admin_wallet': admin_wallet,
       'user_wallet_id': user_wallet_id,
       'user_op_code': user_op_code,
+      'user_op_image': user_op_image,
       'user_image': user_image,
       'user_full_name': user_full_name,
       'user_phone': user_phone,
@@ -111,6 +114,8 @@ class TransactionModel {
           : null,
       user_op_code:
           map['user_op_code'] != null ? map['user_op_code'] as String : null,
+      user_op_image:
+          map['user_op_image'] != null ? map['user_op_image'] as String : null,
       user_image:
           map['user_image'] != null ? map['user_image'] as String : null,
       user_full_name: map['user_full_name'] != null

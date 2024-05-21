@@ -126,7 +126,7 @@ class LayoutTemplate extends GetView<HomeController> {
         if (Get.size.height < 700) {
           return Get.size.height + 60;
         } else {
-          return Get.size.height - navBarHeight + 10;
+          return Get.size.height - navBarHeight + 25;
         }
       }
     } else if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {

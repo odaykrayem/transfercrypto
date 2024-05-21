@@ -12,7 +12,7 @@ FutureOr<dynamic> responseInterceptor(
 dynamic handelResponse(response) {
   debugPrint('RESPONSE START /////////////////');
   debugPrint('         Status Code: ${response.statusCode}');
-  // debugPrint('         Body: ${response.body}');
+  debugPrint('         Body: ${response.body}');
   debugPrint('RESPONSE END /////////////////');
   return response;
   // switch (response.statusCode) {
