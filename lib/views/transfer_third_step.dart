@@ -244,7 +244,9 @@ class _TransferThirdStepState extends State<TransferThirdStep> {
                                                     onCancel: () {});
                                               }
                                             } else {
-                                              if (pickedCodeImageFile == null) {
+                                              if (chooseOperationImage &&
+                                                  (pickedCodeImageFile ==
+                                                      null)) {
                                                 showCustomSnackBar(
                                                     'chooseImage'.tr);
                                               } else {
